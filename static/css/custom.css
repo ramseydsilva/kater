@@ -1,0 +1,125 @@
+#logo * {
+    float: left;   
+}
+
+@media (max-width: 768px) {
+    .navbar-header .header-left {
+        margin-top: -27px;
+    }
+}
+
+.logo-font {
+    font-family: Roboto;
+}
+
+#logo h3 {
+    font-size: 40px;
+    margin: 0 0 0 10px;
+}
+
+#logo h2 {
+    margin: 8px 0 0 4px;
+}
+
+
+#logo span {
+    font-size: 21px;
+    font-weight: 500;
+    margin: 10px 1px;
+}
+
+#logo_img, .fixed-header-on .header .logo img {
+    max-height: 65px;
+}
+
+#carousel-sidebar {
+    height: 500px;
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {
+    .header.fixed.animated {
+        position: fixed !important;
+        top: 0 !important;
+    }
+    .fixed-header-on .header .logo {
+        display: block;
+    }
+    .header .logo h3 {
+        margin: 0 10px;
+    }
+    .header .logo img {
+        margin-top: 5px !important;
+    }
+    #logo h3 {
+        font-size: 32px;
+        margin: 2px 0 0 10px;
+    }
+    #logo img {
+        width: 50px;
+    }
+}
+
+.navbar-collapse {
+    padding-right: 0 !important;
+}
+
+.slides .sfb .circle {
+    margin-right: 10px;
+}
+
+#services ol {
+    list-style: none;
+    padding: 0;
+}
+
+.tools-box {
+    height: 125px;
+}
+
+.tools-box .overlay-top {
+    height: 100%;
+    z-index: 200;
+    overflow: visible;
+}
+
+.tools-box img {
+    max-height: 100px;
+    margin: 0 auto;
+}
+
+.tools-box i {
+    font-size: 100px;
+}
+
+.tools-box .overlay-container a:hover {
+    text-decoration: none;
+    color: #517D89;
+}
+
+.plan ul.shadow {
+    height: 650px;
+    padding: 0 30px;
+}
+
+.plan ul.shadow li.package-item i {
+    margin-right: 5px;
+    color: #40E443;
+}
+
+.plan ul.shadow li.package-item {
+    text-align: left;
+}
+
+.pricing-tables {
+    margin: 0;
+}
+
+.plan .default-bg {
+    background-color: #51B875;
+    border-color: #51B875;
+}
+
+.error {
+    color: red;
+}

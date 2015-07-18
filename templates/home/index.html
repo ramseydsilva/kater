@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block main_container %}
+    {% for n in navigations%}
+    <section id="{{ n.slug }}" class="{% cycle 'light-gray-bg' '' %} clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 pv-30">
+                    {{ n.content|safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,3 @@
+*.pyc
+/served
+/settings_local.py
