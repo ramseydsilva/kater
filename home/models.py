@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 class Navigation(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
-    url = models.URLField(null=True, blank=True, max_length=200)
+    url = models.CharField(null=True, blank=True, max_length=200)
     order = models.IntegerField(default=0)
     published = models.BooleanField(default=True)
     content = RichTextField(null=True, blank=True)

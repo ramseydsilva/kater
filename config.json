@@ -1,3 +1,1 @@
-{
-    "repo": "git@codeinate.com:templates/django.git"
-}
+{"repo": "git@codeinate.com:templates/django.git", "domain": "dev.default.com", "db_name": "default_dev", "db_password": "default_dev_pass", "db_type": "postgres", "project": "default", "host": "codeinate.com", "db_user": "default_dev", "db_host": "localhost", "user": "ramsey", "env": "dev", "debug": "True", "type": "django"}

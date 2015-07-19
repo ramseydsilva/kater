@@ -151,7 +151,7 @@ h6 {
 }
 /* Medium devices (desktops, tablets, 992px and up) */
 @media (min-width: 992px) {
-  .title {
+  h1, h2, h3, .title {
     margin-top: 0;
   }
 }
@@ -1411,6 +1411,7 @@ h5 + .separator {
 .ph-30 {
   padding-left: 30px;
   padding-right: 30px;
+  .b bnm
 }
 .ph-40 {
   padding-left: 40px;
@@ -6950,4 +6951,3 @@ h6.media-heading {
     background: #000000;
   }
 }
-/*# sourceMappingURL=style.css.map */

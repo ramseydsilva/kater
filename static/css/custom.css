@@ -14,7 +14,6 @@
 
 #logo h3 {
     font-size: 40px;
-    margin: 0 0 0 10px;
 }
 
 #logo h2 {
@@ -122,4 +121,27 @@
 
 .error {
     color: red;
+}
+
+body.contact a.contact-btn {
+    display: none;
+}
+
+#site-name {
+    margin-top: 7px;
+}
+
+.main-container {
+    padding: 20px 0;
+}
+
+.close {
+    font-size: 24px;
+}
+
+.alert-square {
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 400px;
 }

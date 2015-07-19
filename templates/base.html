@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load i18n staticfiles %}
 
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -6,70 +6,139 @@
 <html lang="en">
 	<!--<![endif]-->
 
-<head>
-  <meta charset="utf-8">
-  <title>{% block title %}{{ site.title }}{% endblock %}</title>
-  <meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
-  <meta name="author" content="codeinate.com">
+    <head lang="{% block lang %}en{% endblock %}">
+    {% block head %}
+      <meta charset="utf-8">
+      <title>{% block title %}{{ site.title }}{% endblock %}</title>
+      <meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
+      <meta name="author" content="codeinate.com">
 
-  <!-- Mobile Meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Mobile Meta -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
 
-  <!-- Web Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-  
-  <!-- Bootstrap core CSS -->
-  <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
-  <!-- Font Awesome CSS -->
-  <link href="{% static "fonts/font-awesome/css/font-awesome.css" %}" rel="stylesheet">
-  <!-- Fontello CSS -->
-  <link href="{% static "fonts/fontello/css/fontello.css" %}" rel="stylesheet">
+      <!-- Web Fonts -->
+      <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 
-  <!-- Plugins -->
-  <link href="{% static "plugins/magnific-popup/magnific-popup.css" %}" rel="stylesheet">
-  <link href="{% static "plugins/rs-plugin/css/settings.css" %}" rel="stylesheet">
-  <link href="{% static "css/animations.css" %}" rel="stylesheet">
-  <link href="{% static "plugins/owl-carousel/owl.carousel.css" %}" rel="stylesheet">
-  <link href="{% static "plugins/owl-carousel/owl.transitions.css" %}" rel="stylesheet">
-  <link href="{% static "plugins/hover/hover-min.css" %}" rel="stylesheet">
-  <link href="{% static "plugins/morphext/morphext.css" %}" rel="stylesheet">
-  
-  <!-- the project core CSS file -->
-  <link href="{% static "css/style.css" %}" rel="stylesheet" >
+      <!-- Bootstrap core CSS -->
+      <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+      <!-- Font Awesome CSS -->
+      <link href="{% static "fonts/font-awesome/css/font-awesome.css" %}" rel="stylesheet">
+      <!-- Fontello CSS -->
+      <link href="{% static "fonts/fontello/css/fontello.css" %}" rel="stylesheet">
 
-  <!-- Color Scheme (In order to change the color scheme, replace the blue.css with the color scheme that you prefer)-->
-  <link href="{% static "css/skins/light_blue.css" %}" rel="stylesheet">
+      <!-- Plugins -->
+      <link href="{% static "plugins/magnific-popup/magnific-popup.css" %}" rel="stylesheet">
+      <link href="{% static "plugins/rs-plugin/css/settings.css" %}" rel="stylesheet">
+      <link href="{% static "css/animations.css" %}" rel="stylesheet">
+      <link href="{% static "plugins/owl-carousel/owl.carousel.css" %}" rel="stylesheet">
+      <link href="{% static "plugins/owl-carousel/owl.transitions.css" %}" rel="stylesheet">
+      <link href="{% static "plugins/hover/hover-min.css" %}" rel="stylesheet">
+      <link href="{% static "plugins/morphext/morphext.css" %}" rel="stylesheet">
 
-  <!-- Custom css --> 
-  <link href="{% static "css/custom.css" %}" rel="stylesheet">
+      <!-- the project core CSS file -->
+      <link href="{% static "css/style.css" %}" rel="stylesheet" >
+
+      <!-- Color Scheme (In order to change the color scheme, replace the blue.css with the color scheme that you prefer)-->
+      <link href="{% static "css/skins/light_blue.css" %}" rel="stylesheet">
+
+      <!-- Custom css -->
+      <link href="{% static "css/custom.css" %}" rel="stylesheet">
+
+      {% block extra_head %}{% endblock %}
+  {% endblock %}
 </head>
 
 <!-- body classes:  -->
 <!-- "boxed": boxed layout mode e.g. <body class="boxed"> -->
 <!-- "pattern-1 ... pattern-9": background patterns for boxed layout mode e.g. <body class="boxed pattern-1"> -->
 <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
-<body class="no-trans  ">
+<body class="no-trans {% block body_class %}{% endblock %}">
 
   <!-- scrollToTop -->
   <!-- ================ -->
   <div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
-  
+
   <!-- page wrapper start -->
   <!-- ================ -->
   <div class="page-wrapper">
 
     <div class="header-container">
-      {% include "includes/headertop.html" %}
-      {% include "includes/headernav.html" %}
+
+        {% block header_top %}
+        <div class="header-top dark">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-3 col-sm-6 col-md-8">
+                    {% block branding %}
+                    {% if site.show_social_links %}
+                        <div class="header-top-first clearfix">
+                            <ul class="social-links circle small clearfix hidden-xs">
+                                {% include "includes/social.html" %}
+                            </ul>
+                            <div class="social-links hidden-lg hidden-md hidden-sm circle small">
+                                <div class="btn-group dropdown">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
+                                    <ul class="dropdown-menu dropdown-animation">
+                                        {% include "includes/social.html" %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% endblock %}
+                    </div>
+
+                    <div class="col-xs-9 col-sm-6 col-md-4">
+                    {% if site.show_user_login %}
+                        <div id="header-top-second" class="clearfix">
+                            <div class="header-top-dropdown text-right">
+                                {% block user_top_login %}
+
+                                    {% if user.is_anonymous %}
+                                        {% include "includes/user_nav_login.html" %}
+                                    {% else %}
+
+                                        {% block usertools %}
+                                        {% if user.is_staff %}
+                                        <div class="btn-group">
+                                            <a class="btn btn-default btn-sm" href="{% url "admin:index" %}">{% trans 'Admin' %}</a>
+                                        </div>
+                                        {% endif %}
+                                        {% endblock %}
+
+                                        <div class="btn-group">
+                                            <a href="{% url "profile" user.username %}" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> {{ user }}</a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a href="{% url "logout" %}" class="btn btn-default btn-sm"><i class="fa fa-sign-out pr-10"></i>{% trans 'Logout' %}</a>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% endblock %}
+
+        {% block header_nav %}
+            {% include "includes/headernav.html" %}
+        {% endblock %}
+
     </div>
 
-    {% block breadcrumbs %}
+    {% block breadcrumb_container %}
       {% include "includes/breadcrumbs.html" %}
     {% endblock %}
-    
+
     {% block main_container %}
     <section class="main-container">
       <div class="container">
@@ -79,9 +148,9 @@
       </div>
     </section>
     {% endblock %}
-    
+
     {% include "includes/footer.html" %}
-    
+
   </div>
   <!-- page-wrapper end -->
 

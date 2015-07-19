@@ -1391,9 +1391,10 @@
 					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
 						var target = $(this.hash);
 						target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                        var offset =  $("section")[0] == target[0] ? 77 : 64;
 						if (target.length) {
 							$('html,body').animate({
-								scrollTop: target.offset().top-64
+								scrollTop: target.offset().top-offset
 							}, 1000);
 							return false;
 						}

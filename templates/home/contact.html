@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "home/page.html" %}
 
 {% load staticfiles %}
 
@@ -11,14 +11,11 @@
     {{ block.super }}
 {% endblock %}
 
-{% block main %}
+{% block section %}
+
 <!-- main start -->
 <div class="main col-md-8">
     <!-- page-title start -->
-    <h1 class="page-title">Contact Us</h1>
-    <div class="separator-2"></div>
-    <!-- page-title end -->
-    <p>It would be great to hear from you! Just drop us a line and ask for anything with which you think we could be helpful. We are looking forward to hearing from you!</p>
     <div class="alert alert-success {% if not success %}hidden{% endif %}" id="MessageSent">
         We have received your message, we will contact you very soon.
     </div>
@@ -94,6 +91,8 @@
 
 </aside>
 <!-- sidebar end -->
+
+<div class="col-md-12 clearfix p-40"></div>
 
 {% endblock %}
 

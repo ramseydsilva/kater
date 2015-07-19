@@ -1,0 +1,16 @@
+{% extends "home/index.html" %}
+
+{% block body_class %}{{ navigation.slug }}{% endblock %}
+
+{% block main_container %}
+    <section id="{{ navigation.slug }}" class="{% cycle 'light-gray-bg' '' %} clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 pv-30">
+                    {{ navigation.content|safe }}
+                </div>
+                {% block section %}{% endblock %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

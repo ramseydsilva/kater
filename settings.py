@@ -121,6 +121,11 @@ DEFAULT_FROM_EMAIL = 'testing@example.com'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITR_IMAGE_BACKEND = "pillow"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    }
+}
 
 try:
     from settings_local import *
