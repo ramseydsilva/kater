@@ -8,9 +8,6 @@ class AjaxableResponseMixin(object):
     """
     def form_invalid(self, form):
 
-        print "here"
-        print self.request.POST, self.request.GET
-
         response = super(AjaxableResponseMixin, self).form_invalid(form)
         if self.request.is_ajax():
             return JsonResponse(form.errors, status=400)
