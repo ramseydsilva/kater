@@ -32,6 +32,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=50)),
                 ('slug', models.SlugField(unique=True)),
+                ('url', models.CharField(max_length=200, null=True, blank=True)),
                 ('order', models.IntegerField(default=0)),
                 ('published', models.BooleanField(default=True)),
                 ('content', ckeditor.fields.RichTextField(null=True, blank=True)),
