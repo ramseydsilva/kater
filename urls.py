@@ -8,8 +8,8 @@ from django.template.response import TemplateResponse
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
-    url(r'', include('home.urls')),
     url(r'', include('users.urls')),
+    url(r'', include('home.urls')),
 ]
 
 if settings.DEBUG:
