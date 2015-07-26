@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 from django.conf import settings
+import ckeditor.fields
 
 
 class Migration(migrations.Migration):
@@ -34,7 +35,7 @@ class Migration(migrations.Migration):
                 ('url', models.CharField(max_length=200, null=True, blank=True)),
                 ('order', models.IntegerField(default=0)),
                 ('published', models.BooleanField(default=True)),
-                ('content', models.TextField(null=True, blank=True)),
+                ('content', ckeditor.fields.RichTextField(null=True, blank=True)),
             ],
             options={
                 'ordering': ('order', 'title'),
