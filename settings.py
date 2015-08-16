@@ -14,7 +14,7 @@ SECRET_KEY = '1137hj6a^d#i1z@n^drhc4ctp4_ob_9rez@6lf3e=hqge#pw0+'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_PATH, 'static'),
+    os.path.join(PROJECT_PATH, 'theme/static'),
 )
 
 # Allow all host headers
@@ -54,7 +54,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(PROJECT_PATH, "templates")
+            os.path.join(PROJECT_PATH, "theme/templates")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
