@@ -24,7 +24,7 @@ define([
             this.$el.addClass("selected");
             this.$el.find("i").removeClass("invisible");
             this.model.skills.forEach(function(skill){
-               skill.view.select(); 
+               skill.view && skill.view.select(); 
             });
         },
 
@@ -34,7 +34,7 @@ define([
             this.$el.removeClass("selected");
             this.$el.find("i").addClass("invisible");
             this.model.skills.forEach(function(skill){
-               skill.view.unselect(); 
+               skill.view && skill.view.unselect(); 
             });
         },
 
