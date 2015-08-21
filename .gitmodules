@@ -1,0 +1,3 @@
+[submodule "theme"]
+	path = theme
+	url = git@codeinate.com:themes/django/single_page/dark.git
