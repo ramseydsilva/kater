@@ -1,1 +1,1 @@
-define(["backbone"],function(t){return t.Model.extend({initialize:function(){this.category=app.collections.category.findWhere({id:this.attributes.parent}),this.category&&this.category.skills.push(this)}})});
+define(["backbone"],function(e){return e.Model.extend({initialize:function(){var e=this;app.promises.categoryLoaded.done(function(){e.category=app.collections.category.findWhere({id:e.attributes.parent}),e.category&&e.category.skills.push(e)})}})});

@@ -6,8 +6,11 @@ define([
     return Backbone.Model.extend({
 
         initialize: function(options) {
-            this.category = app.collections["category"].findWhere({id: this.attributes.parent});
-            this.category && this.category.skills.push(this);
+            var that = this;
+            app.promises.categoryLoaded.done(function() {
+                that.category = app.collections["category"].findWhere({id: that.attributes.parent});
+                that.category && that.category.skills.push(that);               
+            });
         }
 
     });
