@@ -57,12 +57,8 @@ define([
             }
         };
     
-        app.promises.skillLoaded = $.Deferred();
-        app.promises.categoryLoaded = window.app.collections.category.fetch({
-            success: function() {
-                app.promises.skillLoaded = window.app.collections.skill.fetch();
-            }
-        });
+        app.promises.skillLoaded = window.app.collections.skill.fetch();
+        app.promises.categoryLoaded = window.app.collections.category.fetch();
         app.promises.cityLoaded = window.app.collections.city.fetch();
         
         app.user.fetch({

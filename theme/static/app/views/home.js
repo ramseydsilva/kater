@@ -32,7 +32,7 @@ define([
             var models = ['City', 'Category', 'Skill'];
             models.forEach(function(model_name) {
                 var lower_name = model_name.toLowerCase();
-                app.promises["skillLoaded"].done(function() {
+                app.promises[lower_name+"Loaded"].done(function() {
                     app.collections[lower_name].forEach(function(model) {
                         view["add"+model_name](model);
                     });
