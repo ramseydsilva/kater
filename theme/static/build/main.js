@@ -1,0 +1,1 @@
+define(["./config"],function(){window.env=require.toUrl(".").indexOf("build")>0?"prod":"dev","prod"==window.env&&(ng_config_defaults={assets_dir:"/static/app/lib/nogray-1.2.2/assets/"}),require(["rentsomefolks"])});

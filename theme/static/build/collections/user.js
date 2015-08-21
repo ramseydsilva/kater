@@ -1,0 +1,1 @@
+define(["backbone","../models/user"],function(e,n){return e.Collection.extend({model:n,url:"/api/users/"})});

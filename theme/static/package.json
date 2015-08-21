@@ -1,0 +1,21 @@
+{
+  "name": "rentsomefolks",
+  "version": "1.0.0",
+  "description": "Rent folks",
+  "main": "app/main.js",
+  "directories": {
+      "test": "tests"
+  },
+  "devDependencies": {
+      "async": "^0.9.0",
+      "grunt": "^0.4.5",
+      "mocha": "^2.0.1",
+      "should": "^4.4.1",
+      "xunit-file": "0.0.5"
+  },
+  "scripts": {
+    "test": "mocha tests --recursive --grep Perf --invert"
+  },
+  "author": "Ramsey",
+  "license": "ISC"
+}

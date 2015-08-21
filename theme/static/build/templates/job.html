@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4 job-icon-container">
+                <h4><i class="fa fa-calendar-o"></i> <%= model.startDate() %></h4>
+                <h4><i class="fa fa-clock-o"></i> <%= model.startTime() %></h4>
+                <h4><i class="fa fa-map-marker"></i> <%= model.attributes.address %>, <%= model.city && model.city.attributes.name %></h4>
+                <h4><i class="fa fa-tags"></i> <%= model.getSkills() %>, <%= model.category.attributes.title %></h4>
+                <h4><i class="fa fa-money"></i> <%= model.attributes.hourly_rate %> <%= model.attributes.currency %> / hr</h4>
+            </div>
+            <div class="col-md-8">
+                <p class="lead"><%= model.attributes.description %></p>
+                <p>
+                    <strong>End date:</strong> <%= model.attributes.end_date %><br/>
+                    <strong>Number of vacancies:</strong> <%= model.attributes.number %>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+    <% if (typeof(review) != "undefined") { %>
+        <p>Confirm job posting?</p>
+        <span id="saveJob" class="btn btn-default">Yes, Post Job!</span>
+        <a href="/jobs/post/" class="live btn btn-warning">Go Back to Edit</a>
+        <% } else { %>
+            <a href="<%= model.getUrl() %>apply/" class="live btn btn-warning">Apply</a>
+        <% } %>
+    </div>
+</div>

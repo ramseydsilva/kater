@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block main_container %}
+<div class="main-container dark-translucent-bg" style="background-image:url('{% static "images/background-img-6.jpg" %}');">
+    <div class="container">
+        <div class="row">
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+                <div class="form-block center-block p-30 light-gray-bg border-clear">
+                    <h2 class="title">Sign Up</h2>
+                    {% if message %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            {{ message }}
+                    </div>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="." method="post">{% csrf_token %}
+                        <div class="form-group has-feedback">
+                            <label for="inputName" class="col-sm-3 control-label">First Name <span class="text-danger small">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" name="first_name" value="{{ first_name }}" class="form-control" id="inputName" placeholder="First Name" required="">
+                                <i class="fa fa-pencil form-control-feedback"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="inputLastName" class="col-sm-3 control-label">Last Name <span class="text-danger small">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" name="last_name" value="{{ last_name }}" class="form-control" id="inputLastName" placeholder="Last Name" required="">
+                                <i class="fa fa-pencil form-control-feedback"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="inputUserName" class="col-sm-3 control-label">User Name <span class="text-danger small">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" name="username" value="{{ username }}" class="form-control" id="inputUserName" placeholder="User Name" required="">
+                                <i class="fa fa-user form-control-feedback"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="inputEmail" class="col-sm-3 control-label">Email <span class="text-danger small">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="email" name="email" value="{{ email }}" class="form-control" id="inputEmail" placeholder="Email" required="">
+                                <i class="fa fa-envelope form-control-feedback"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="inputPassword" class="col-sm-3 control-label">Password <span class="text-danger small">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="password" name="password" value="{{ password }}" class="form-control" id="inputPassword" placeholder="Password" required="">
+                                <i class="fa fa-lock form-control-feedback"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" required=""> Accept our <a href="#">privacy policy</a> and <a href="#">customer agreement</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <input type="hidden" name="next" value="{{ next }}" />
+                                <button type="submit" class="btn btn-group btn-default btn-animated">Sign Up <i class="fa fa-check"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- main end -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

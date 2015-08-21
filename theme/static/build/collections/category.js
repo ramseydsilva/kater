@@ -1,0 +1,1 @@
+define(["backbone","../models/category"],function(e,o){return e.Collection.extend({model:o,url:"/api/categories"})});

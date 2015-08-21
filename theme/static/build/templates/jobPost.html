@@ -1,0 +1,59 @@
+<div class="row" id="postJobForm">
+    <div class="col-md-12">
+        <div class="form-group">
+            <h3>Job Title</h3>
+            <input id="jobTitle" name="title" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <h3>Job Description</h3>
+            <textarea id="jobDescription" name="description" class="form-control" rows="5"></textarea>
+        </div>
+    </div>
+</div>
+<div class="row" id="postFormFilters">
+    <div class="col-md-3">
+        <div class="form-group">
+            <h3>Start Date/Time</h3>
+            <input id="startDate" name="startDate" type="text" class="form-control" placeholder="Start Date" />
+        </div>
+        <div class="form-group">
+            <input id="startTime" name="startTime" type="text" class="form-control mt-10" placeholder="Start Time" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <h3>End Date/Time</h3>
+            <input id="endDate" name="endDate" type="text" class="form-control" placeholder="End Date" />
+        </div>
+        <div class="form-group">
+            <input id="endTime" name="endTime" type="text" class="form-control mt-10" placeholder="End Time" />
+        </div>
+    </div>
+    <div class="col-md-3 ">
+        <div class="form-group">
+            <h3>Number of people</h3>
+            <input id="number" name="number" type="number" class="form-control" min="1" max="100" step="1" value="1" />
+        </div>
+    </div>
+    <div class="col-md-3" id="hourly-rate">
+        <div class="form-group">
+            <h3>Hourly Rate</h3>
+            <div class="form-inline">
+                <input id="hourlyRate" name="hourlyRate" type="text" class="form-control" type="number" min="1" max="100000" size="10" value="10" />
+                <select id="currency" name="currency"class="form-control">
+                    <option value="INR">INR</option>
+                    <option value="USD">USD</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <a href="/jobs/post/review/" id="post-submit" class="live btn btn-default">Submit</a>
+        <a id="post-form-cancel" class="btn btn-warning live" href="/jobs/">Cancel</a>
+    </div>
+
+    <div class="col-md-12">
+        <div id="jobPostError" class="hidden alert alert-warning"></div>
+    </div>
+
+</div>

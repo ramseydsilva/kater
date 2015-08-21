@@ -1,0 +1,1 @@
+define(["backbone","../collections/skill"],function(i){return i.Model.extend({initialize:function(){this.skills=[]}})});

@@ -1,0 +1,7 @@
+<% if (username) { %>
+    <li class="login-nav"><h2><a class="live" href='/profile/'>Profile</a></h2>
+     <li class="login-nav"><h2><a class="live" href="/logout/">Logout</a></h2></li>
+<% } else { %>
+    <li class="join-nav"><h1><a class="live" href="/join/">Join</a></h1></li>
+    <li class="login-nav"><h2><a class="live" href="/login/">Login</a></h2></li>
+<% } %>

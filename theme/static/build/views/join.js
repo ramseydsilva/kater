@@ -1,0 +1,1 @@
+define(["backbone","underscore","text!templates/join.html"],function(e,t,n){return e.View.extend({template:t.template(n),events:{},initialize:function(){this.render()},render:function(){this.html=$(this.template({})),this.$el.html(this.html)}})});
