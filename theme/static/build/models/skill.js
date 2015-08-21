@@ -1,1 +1,1 @@
-define(["backbone"],function(e){return e.Model.extend({initialize:function(){var e=this;app.promises.categoryLoaded.done(function(){e.category=app.collections.category.findWhere({id:e.attributes.parent}),e.category&&e.category.skills.push(e)})}})});
+define(["backbone"],function(e){return e.Model.extend({initialize:function(){var e=this;this.attributes.parent&&app.promises.categoryLoaded.done(function(){e.category=app.collections.category.findWhere({id:e.attributes.parent}),e.category&&e.category.skills.push(e)})}})});

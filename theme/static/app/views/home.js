@@ -27,10 +27,6 @@ define([
 
             app.collections['job'] = this.jobCollection = new JobCollection();
             
-            this.categoryCollection = options.categoryCollection;
-            this.skillCollection = options.skillCollection;
-            this.cityCollection = options.cityCollection;
-
             this.render();
             
             var models = ['City', 'Category', 'Skill'];
@@ -40,7 +36,7 @@ define([
                     app.collections[lower_name].forEach(function(model) {
                         view["add"+model_name](model);
                     });
-                    app.collections["category"].on("add", view["add"+model_name], view);
+                    app.collections[lower_name].on("add", view["add"+model_name], view);
                 });
             })
         },
