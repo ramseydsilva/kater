@@ -36,6 +36,9 @@ define([
                     app.collections[lower_name].forEach(function(model) {
                         view["add"+model_name](model);
                     });
+                    app.collections[lower_name].forEach(function(model) {
+                        view["add"+model_name](model)
+                    });
                     app.collections[lower_name].on("add", view["add"+model_name], view);
                 });
             })
