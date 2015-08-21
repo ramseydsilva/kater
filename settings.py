@@ -14,7 +14,8 @@ SECRET_KEY = '1137hj6a^d#i1z@n^drhc4ctp4_ob_9rez@6lf3e=hqge#pw0+'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_PATH, 'theme/static'),
+    ('lib', os.path.join(PROJECT_PATH, 'theme/static/lib')),
+    ('build', os.path.join(PROJECT_PATH, 'theme/static/build'))
 )
 
 # Allow all host headers
