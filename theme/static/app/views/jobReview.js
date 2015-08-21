@@ -15,12 +15,11 @@ define([
 
         initialize: function(options) {
             this.render();
-            this.jobCollection = options.jobCollection;
-            this.model.on("change", this.reRender, this);
+            app.views["jobPost"].job.on("change", this.reRender, this);
         },
 
         saveJob: function() {
-            this.jobCollection.create(this.model.attributes, {
+            app.collections.job.create(app.views["jobPost"].job.attributes, {
                 wait: true,
                 success: function(model) {
                    app.router.navigate(model.getUrl(), true);
@@ -33,11 +32,10 @@ define([
         },
 
         render: function() {
-            var view = this;
-            app.changePageTitle(this.model.attributes.title);
+            app.changePageTitle(app.views["jobPost"].job.attributes.title);
             this.html = $(this.template({
                 review: true,
-                model: view.model
+                model: app.views["jobPost"].job
             }));
             this.$el.html(this.html);
         }

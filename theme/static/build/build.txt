@@ -14,8 +14,6 @@ controller.js
 core/router.js
 /home/ramsey/projects/rentsomefolks/dev/src/theme/static/lib/text.js
 text!templates/job.html
-/home/ramsey/projects/rentsomefolks/dev/src/theme/static/lib/jquery-ui-1.11.4.datepicker/jquery-ui.min.js
-/home/ramsey/projects/rentsomefolks/dev/src/theme/static/app/views/jobReview.js
 /home/ramsey/projects/rentsomefolks/dev/src/theme/static/app/views/job.js
 text!templates/map.html
 /home/ramsey/projects/rentsomefolks/dev/src/theme/static/lib/async.js
@@ -52,7 +50,9 @@ core/authSync.js
 text!templates/job-list-item.html
 /home/ramsey/projects/rentsomefolks/dev/src/theme/static/app/views/job-list-item.js
 text!templates/jobPost.html
+/home/ramsey/projects/rentsomefolks/dev/src/theme/static/lib/jquery-ui-1.11.4.datepicker/jquery-ui.min.js
 /home/ramsey/projects/rentsomefolks/dev/src/theme/static/app/views/jobPost.js
+/home/ramsey/projects/rentsomefolks/dev/src/theme/static/app/views/jobReview.js
 text!templates/jobs.html
 /home/ramsey/projects/rentsomefolks/dev/src/theme/static/app/views/jobs.js
 text!templates/join.html

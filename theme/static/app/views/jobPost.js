@@ -4,6 +4,7 @@ define([
     "text!templates/jobPost.html",
     "../models/job",
     "jqueryUI",
+    "css!jqueryUICSS",
     "timepicker"
 ], function(Backbone, _, template, JobModel) {
 

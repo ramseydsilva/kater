@@ -129,25 +129,6 @@ define([
             }
             if (callback) callback();
         },
-        
-        jobReview: function(e, callback) {
-            if (!app.views["jobPost"]) {
-                return this.navigate("/jobs/post/", true);
-            }
-            if (!app.views["jobReview"]) {
-                require(["views/jobReview"], function(JobsView) {
-                    app.views["jobReview"] = new JobsView({
-                        model: app.views["jobPost"].job,
-                        el: document.getElementById("jobReview"),
-                        jobCollection: app.collections["job"]
-                    });
-                    jobReviewView(callback);
-                });
-            } else {
-                app.views["jobReview"].render();
-                jobReviewView(callback);
-            }
-        },
 
         job: function(id, job, callback) {
             var that = this;
@@ -192,6 +173,11 @@ define([
             if (!callback) callback = router[name];
             window.scrollTo(0,0);
             $body.show();
+
+            if (name == "jobReview" && !app.views["jobPost"]) {
+                return this.navigate("/jobs/new/", true);
+            }
+            
             if (!app.views["map"]) {
                 require(["views/map"], function(MapView) {
                     app.views["map"] = new MapView({

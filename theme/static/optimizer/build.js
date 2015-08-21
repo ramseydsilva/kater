@@ -21,7 +21,7 @@
             include: ["./views/category", "./views/folks", "./views/home", "./views/job-list-item", "./views/job",
                             "./views/jobPost", "./views/jobReview", "./views/jobs", "./views/join", "./views/login",
                             "./views/map", "./views/profile", "./views/skill", "./views/user"],
-            exclude: ["css!font-awesome-css", "css!fontello-css", "css!jqueryUICSS", "timepicker"]
+            exclude: ["css!font-awesome-css", "css!jqueryUICSS", "css!fontello-css", "timepicker"]
         }
     ]
     
