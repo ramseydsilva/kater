@@ -8,7 +8,7 @@ from django.template.response import TemplateResponse
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
-    url(r'', include('users.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'', include('home.urls')),
 ]
 

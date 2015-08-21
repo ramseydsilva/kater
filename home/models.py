@@ -1,6 +1,9 @@
 from django.db import models
+from django.contrib.gis.geos import Point
+from django.contrib.gis.db.models import PointField
 from django.contrib.sites.models import Site
 from ckeditor.fields import RichTextField
+from cities.models import City
 
 
 class Navigation(models.Model):
@@ -29,25 +32,52 @@ class Contact(models.Model):
     def __unicode__(self):
         return "%s - %s" % (self.name, self.email)
 
+class Category(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.CharField(max_length=50, unique=True)
+    order = models.IntegerField(null=True, blank=True)
+    parent = models.ForeignKey("self", null=True, blank=True, related_name="children")
 
-models.CharField(default='Site Title', max_length=50).contribute_to_class(Site, 'title')
-models.CharField(null=True, blank=True,  max_length=10).contribute_to_class(Site, 'google_analytics_code')
-RichTextField(default="<p text='center'>Copyright &copy; 2015 Site, All rights reserved</p>", null=True, blank=True) \
-        .contribute_to_class(Site, 'footer')
+    class Meta:
+        ordering = ('order', 'title',)
 
-# Social
-models.URLField(null=True, blank=True, max_length=200).contribute_to_class(Site, 'facebook_page')
-models.URLField(null=True, blank=True, max_length=200).contribute_to_class(Site, 'twitter_page')
-models.URLField(null=True, blank=True, max_length=200).contribute_to_class(Site, 'googleplus_page')
-models.URLField(null=True, blank=True, max_length=200).contribute_to_class(Site, 'youtube_page')
+    def __unicode__(self):
+        return self.title
 
-# Contact
-models.CharField(null=True, blank=True,  max_length=200).contribute_to_class(Site, 'address')
-models.CharField(null=True, blank=True, max_length=20).contribute_to_class(Site, 'phone')
-models.CharField(null=True, blank=True, max_length=20).contribute_to_class(Site, 'mobile')
-models.EmailField(null=True, blank=True, max_length=200).contribute_to_class(Site, 'email')
+CURRENCY_CHOICES = (
+    ("INR", "INR"),
+    ("USD", "USD"),
+    ("CAD", "CAD")
+)
 
-models.BooleanField(default=True).contribute_to_class(Site, 'show_social_links')
-models.BooleanField(default=True).contribute_to_class(Site, 'show_footer')
-models.BooleanField(default=True).contribute_to_class(Site, 'show_user_login')
-models.BooleanField(default=True).contribute_to_class(Site, 'show_address')
+class Job(models.Model):
+    title = models.CharField(max_length=300)
+    description = models.TextField()
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    hourly_rate = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.CharField(max_length=20, choices=CURRENCY_CHOICES, default="INR")
+    number = models.PositiveIntegerField(default=1)
+    address = models.CharField(max_length=400)
+    location = PointField()
+    latitude = models.CharField(max_length=20, null=True, blank=True)
+    longitude = models.CharField(max_length=20, null=True, blank=True)
+    city = models.ForeignKey(City)
+    category = models.ForeignKey(Category)
+    skills = models.ManyToManyField(Category, related_name="skill_jobs")
+    date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey('auth.User')
+
+    class Meta:
+        ordering = ('-date', )
+
+    def __unicode__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.location and self.latitude and self.longitude:
+            self.location = Point(float(self.latitude), float(self.longitude))
+
+        super(Job, self).save(*args, **kwargs)
+
+models.BooleanField(default=False).contribute_to_class(City, 'published')

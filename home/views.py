@@ -10,6 +10,11 @@ from django.views.decorators.csrf import csrf_exempt
 class HomeView(TemplateView):
     template_name = "home/index.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.filter(parent=None)
+        return context
+
 class PageView(TemplateView):
     template_name = "home/page.html"
 

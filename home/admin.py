@@ -13,6 +13,11 @@ class ContactAdmin(admin.ModelAdmin):
     list_filter = ('replied',)
     list_editable = ('replied',)
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'parent')
+    prepopulated_fields = {"slug": ("title",)}
+    list_filter = ('parent',)
+
 admin.site.register(Navigation, NavigationAdmin)
 admin.site.register(Contact, ContactAdmin)
-SiteAdmin.list_display = ('title', 'domain', )
+admin.site.register(Category, CategoryAdmin)
