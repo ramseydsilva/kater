@@ -7,7 +7,7 @@ define([
 
         initialize: function(options) {
             this.category = app.collections["category"].findWhere({id: this.attributes.parent});
-            this.category.skills.push(this);
+            this.category && this.category.skills.push(this);
         }
 
     });
