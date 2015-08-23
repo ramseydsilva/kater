@@ -16,13 +16,18 @@
       <!-- Mobile Meta -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+      <link rel="stylesheet" type="text/css" href="{% static "lib/bootstrap/css/bootstrap.css" %}" />
+      <link rel="stylesheet" type="text/css" href="{% static "lib/fonts/font-awesome/css/font-awesome.css" %}" />
+      <link rel="stylesheet" type="text/css" href="{% static "lib/css/style.css" %}" />
+      <link rel="stylesheet" type="text/css" href="{% static "lib/css/custom.css" %}" />
+
       <script type="text/javascript" data-main="/static/app/main" src="{% static "lib/require-2.1.11.min.js" %}"></script>
 
       {% block extra_head %}{% endblock %}
   {% endblock %}
 </head>
 
-<body style="display: none;" class="no-trans {% block body_class %}{% endblock %}">
+<body class="no-trans {% block body_class %}{% endblock %}">
 
   <div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
 
@@ -51,19 +56,21 @@
                 </div>
             </div>
 
-            <div class="col-lg-8 pt-20">
+
+            <div class="col-lg-8 pt-20" id="app-container">
                 <section class="full-width" id="pageTitle"></section>
-                <section class="full-width" id="login"></section>
-                <section class="full-width" id="join"></section>
-                <section class="full-width" id="profile"></section>
-                <section class="full-width" id="jobs"></section>
-                <section class="full-width" id="folks"></section>
-                <section class="full-width" id="user"></section>
-                <section class="full-width hideMap" id="map"></section>
+                <section style="display: none;" class="full-width" id="login"></section>
+                <section style="display: none;" class="full-width" id="join"></section>
+                <section style="display: none;" class="full-width" id="profile"></section>
+                <section style="display: none;" class="full-width" id="jobs"></section>
+                <section style="display: none;" class="full-width" id="folks"></section>
+                <section style="display: none;" class="full-width" id="user"></section>
+                <section class="full-width" id="map"></section>
+                <section class="full-width" id="location"></section>
                 <section class="full-width" id="home"></section>
-                <section class="full-width" id="job"></section>
-                <section class="full-width" id="jobPost"></section>
-                <section class="full-width" id="jobReview"></section>
+                <section style="display: none;" class="full-width" id="job"></section>
+                <section style="display: none;" class="full-width" id="jobPost"></section>
+                <section style="display: none;" class="full-width" id="jobReview"></section>
             </div>
 
             <div class="col-lg-2">

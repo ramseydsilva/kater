@@ -1,11 +1,11 @@
 define([
-    "backbone",
+    "core/view",
     "underscore",
     "text!templates/job.html",
     "jqueryUI"
-], function(Backbone, _, template) {
+], function(View, _, template) {
 
-    return Backbone.View.extend({
+    return View({
 
         template: _.template(template),
 

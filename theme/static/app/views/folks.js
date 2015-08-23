@@ -1,12 +1,12 @@
 define([
-    "backbone",
+    "core/view",
     "underscore",
     "text!templates/folks.html",
     "../collections/category",
     "../collections/search"
-], function(Backbone, _, template, CategoryCollection, SearchCollection) {
+], function(View, _, template, CategoryCollection, SearchCollection) {
 
-    return Backbone.View.extend({
+    return View.extend({
 
         template: _.template(template),
 

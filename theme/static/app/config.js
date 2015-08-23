@@ -65,8 +65,7 @@ define(function() {
             "countTo": ["jquery"],
             "browser": ["jquery"],
             "smoothScroll": ["jquery"],
-            "template": ["jquery", "bootstrap", "modernizr", "browser", "smoothScroll", "css!bootstrap-css", "css!font-awesome-css", "css!fontello-css",
-                                "css!style-css", "css!custom-css"]
+            "template": ["jquery", "bootstrap", "modernizr", "browser", "smoothScroll"]
         }
     });
 });

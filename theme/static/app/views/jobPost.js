@@ -1,14 +1,14 @@
 define([
-    "backbone",
+    "core/view",
     "underscore",
     "text!templates/jobPost.html",
     "../models/job",
     "jqueryUI",
     "css!jqueryUICSS",
     "timepicker"
-], function(Backbone, _, template, JobModel) {
+], function(View, _, template, JobModel) {
 
-    return Backbone.View.extend({
+    return View.extend({
 
         template: _.template(template),
         

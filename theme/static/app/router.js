@@ -22,13 +22,12 @@ define([
     var $jobContainer = $("#job");
     var $mainBack = $("#main-back");
     var $mapContainer = $("#map");
-    var $body = $("body");
 
     var postProcessing = function() {
         if (showHomeButtons) {
-            app.views["home"].showHomeButtons();
+            //app.views["home"].showHomeButtons();
         } else {
-            app.views["home"].hideHomeButtons();
+            //app.views["home"].hideHomeButtons();
         }
         if (hideMap) {
             app.promises.mapLoaded.done(function() {
@@ -68,7 +67,7 @@ define([
             hideBack = true;
             showHomeButtons = true;
             postProcessing();
-            app.views["home"].selectSingleCategory = selectSingleCategory;
+            //app.views["home"].selectSingleCategory = selectSingleCategory;
         },
 
         jobReviewCallback: function(callback) {
@@ -168,36 +167,19 @@ define([
         },
 
         execute: function(callback, args, name) {
-            var router = this;
-            app.changeTitle(title[name]);
-            if (!callback) callback = router[name];
+            
+            //app.changeTitle(title[name]);
             window.scrollTo(0,0);
-            $body.show();
 
             if (name == "jobReview" && !app.views["jobPost"]) {
                 return this.navigate("/jobs/new/", true);
             }
+
+            //app.views.register("map");
+            //app.views.register("home");
             
-            if (!app.views["map"]) {
-                require(["views/map"], function(MapView) {
-                    app.views["map"] = new MapView({
-                        el: document.getElementById("map")
-                    });
-                    if (name != "home" && !app.views["home"]) {
-                        // load home view first
-                        router.home(null, null, function() {
-                            setHide();
-                            if (callback) callback.apply(router, args);
-                        });
-                    } else {
-                        setHide();
-                        if (callback) callback.apply(router, args);
-                    }
-                });
-            } else {
-                setHide();
-                if (callback) callback.apply(router, args);
-            }
+            if (!callback) callback = this[name];
+            if (callback) callback();
         }
 
     });

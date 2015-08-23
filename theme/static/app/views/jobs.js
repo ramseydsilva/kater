@@ -1,13 +1,13 @@
 define([
-    "backbone",
+    "core/view",
     "underscore",
     "text!templates/jobs.html",
     "../collections/category",
     "../collections/search",
     "../views/job-list-item"
-], function(Backbone, _, template, CategoryCollection, SearchCollection, JobListView) {
+], function(View, _, template, CategoryCollection, SearchCollection, JobListView) {
 
-    return Backbone.View.extend({
+    return View.extend({
 
         template: _.template(template),
         

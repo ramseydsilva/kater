@@ -7,6 +7,12 @@ define([
 
         initialize: function() {
 
+        },
+
+        logout: function() {
+            this.fetch({
+                url: "/api/logout/"
+            });
         }
 
     });

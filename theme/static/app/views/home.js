@@ -1,35 +1,26 @@
 define([
-    "backbone",
+    "core/view",
     "underscore",
     "text!templates/home.html",
     "../views/category",
-    "../views/skill",
-    "../collections/job"
-], function(Backbone, _, template, CategoryView, SkillView, JobCollection) {
+    "../views/skill"
+], function(View, _, template, CategoryView, SkillView) {
 
-    var listening = false,
-        run = true;
-
-    return Backbone.View.extend({
+    return View.extend({
 
         template: _.template(template),
         selectSingleCategory: false,
         categories: [],
-        location: null,
 
         events: {
-            'change #city': 'refreshMap',
-            'change #address': 'refreshMap'
+
         },
 
         initialize: function(options) {
-            var view = this;
-
-            app.collections['job'] = this.jobCollection = new JobCollection();
-            
+            var view = this,
+                models = ['Category', 'Skill'];
+                
             this.render();
-            
-            var models = ['City', 'Category', 'Skill'];
             models.forEach(function(model_name) {
                 var lower_name = model_name.toLowerCase();
                 app.promises[lower_name+"Loaded"].done(function() {
@@ -39,16 +30,6 @@ define([
                     app.collections[lower_name].on("add", view["add"+model_name], view);
                 });
             })
-        },
-        
-        refreshMap: function(e) {
-            this.city = this.citySelect.find(":selected").text();
-            this.addressInput.val(this.city);
-            app.collections.city.set({"selected": false});
-            app.collections.city.findWhere(this.citySelect.val()).set("selected", true);
-            setAddress(this.city, function(center) {
-                setMap(center);
-            });
         },
 
         showHomeButtons: function() {
@@ -82,7 +63,10 @@ define([
                     parent: this
                 });
             }
-            this.categoryList.append(model.view.$el);
+            var that = this;
+            this.promise.done(function() {
+                that.categoryList.append(model.view.$el);
+            });
         },
 
         addSkill: function(model) {
@@ -92,58 +76,77 @@ define([
                     parent: this
                 });
             }
-            this.skillList.append(model.view.$el);
-        },
-        
-        addCity: function(model) {
-            this.citySelect.append('<option value="'+model.id+'">'+model.attributes.name+'</option>');
+            var that = this;
+            this.promise.done(function() {
+                that.skillList.append(model.view.$el);
+            });
         },
 
         render: function() {
-            var view = this;
+            var that = this;
             this.html = $(this.template({
                 "categories": app.collections.category.models
             }));
             this.$el.html(this.html);
+
+            app.promises.mapLoaded.done(function() {
             
-            var input = document.getElementById('address');
-            if (input && $(input).is(":visible")) {
-                setAddress(input.value, function(center) {
-                    setMap(center);
+                var input = document.getElementById('address');
+                if (input && $(input).is(":visible")) {
+                    setAddress(input.value, function(center) {
+                        setMap(center);
+                    });
+                } else {
+                    app.promises.mapLoaded.done(function() {
+                        setMap(center);
+                    });
+                }
+
+                // Create the search box and link it to the UI element.
+                app.searchBox = new google.maps.places.SearchBox(input);
+
+                app.searchBox.addListener('places_changed', function() {
+                    var places = app.searchBox.getPlaces();
+                    if (!places || places.length == 0) return;
+
+                    clearMarkers();
+
+                    // For each place, get the icon, name and location.
+                    var bounds = new google.maps.LatLngBounds();
+                    places.forEach(function(place) {
+                        app.markers.push(getMarker(place.geometry.location, place.name))
+                        if (place.geometry.viewport) {
+                            bounds.union(place.geometry.viewport);
+                        } else {
+                            bounds.extend(place.geometry.location);
+                        }
+                    });
+                    app.map.fitBounds(bounds);
                 });
-            } else {
-               setMap(center); 
-            }
 
-            // Create the search box and link it to the UI element.
-            app.searchBox = new google.maps.places.SearchBox(input);
-
-            app.searchBox.addListener('places_changed', function() {
-                var places = app.searchBox.getPlaces();
-                if (!places || places.length == 0) return;
-
-                clearMarkers();
-
-                // For each place, get the icon, name and location.
-                var bounds = new google.maps.LatLngBounds();
-                places.forEach(function(place) {
-                    app.markers.push(getMarker(place.geometry.location, place.name))
-                    if (place.geometry.viewport) {
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
+                // Bias the SearchBox results towards current map's viewport.
+                this.map.addListener('bounds_changed', function() {
+                    app.views.home.view.promise.done(function() {
+                        app.searchBox.setBounds(app.map.getBounds());
+                    })
                 });
-                app.map.fitBounds(bounds);
+
+                this.map.addListener('center_changed', function() {
+                    var args = arguments;
+                    //var that = this;
+                    app.events["centerChanged"].listeners.forEach(function(listener) {
+                        if (listener) listener.apply(that, args);
+                    });
+                });
+            
+                that.promise.resolved();
+
             });
-    
+
             this.postFilters = this.$("#postFilters")
             this.categoryList = this.$el.find("#category-list");
             this.skillListContainer = this.$el.find("#skill-list-container");
             this.skillList = this.$el.find("#skill-list");
-            this.citySelect = this.$("#city");
-            this.addressInput = this.$("#address");
-            this.locationInput = this.$('#location');
             this.homeButtons = this.$el.find("#home-buttons");
         }
 

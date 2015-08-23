@@ -1,69 +1,18 @@
 define([
-    "backbone",
+    "core/view",
     "underscore",
     "text!templates/map.html",
     'async!googlemaps'
-], function(Backbone, _, template) {
+], function(View, _, template) {
 
-    var listening = false,
-        run = true,
-        icon = "/static/lib/images/marker.png",
-        marker,
-        geocoder = new google.maps.Geocoder();
-    app.markers = [];
-    center = new google.maps.LatLng(12.9141417, 74.85595680000006);
-
-    var getMarker = function(position, title) {
-        return new google.maps.Marker({
-            map: app.map,
-            draggable: true,
-            position: position,
-            title: title,
-            icon: icon
-        });
-    }
-
-    setMap = function(c) {
-        clearMarkers();
-        app.markers.push(getMarker(c));
-        app.map.setCenter(c || center);
-    };
-
-    clearMarkers = function() {
-        app.markers.forEach(function(marker) { marker.setMap(null); });
-        app.markers = [];
-    };
-
-    setAddress = function(val, callback) {
-        geocoder.geocode({'address': val}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                var lat = results[0].geometry.location.lat();
-                var lng = results[0].geometry.location.lng();
-                var latLng = new google.maps.LatLng(lat, lng);
-                if (callback) callback(latLng);
-            } else {
-                if (callback) callback();
-            }
-        });
-    };
-
-    var getMapOptions = function(center) {
-        return {
-            zoom: 12,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            center: center,
-            mapTypeControl: false,
-            streetViewControl: false,
-            zoomControlOptions: {
-                position: google.maps.ControlPosition.LEFT_TOP
-            }
-        };
-    }
-
-
-    return Backbone.View.extend({
+    return View.extend({
 
         template: _.template(template),
+        
+        markers: [],
+        marker: new google.maps.LatLng(12.9141417, 74.85595680000006),
+        geocoder:new google.maps.Geocoder(),
+        icon: "/static/lib/images/marker.png",
 
         initialize: function() {
             app.events["centerChanged"] = new Event();
@@ -71,6 +20,49 @@ define([
             app.events["centerChanged"].listeners.push(_.bind(this.refreshMap, this));
         },
         
+        hide: function() {
+            this.$el.addClass("hideMap");
+        },
+
+        show: function() {
+            this.$el.removeClass("hideMap");
+        },
+
+        setMap: function(c) {
+            clearMarkers();
+            app.markers.push(getMarker(c));
+            app.map.setCenter(c || center);
+        },
+
+        clearMarkers: function() {
+            this.markers.forEach(function(marker) { marker.setMap(null); });
+            this.markers = [];
+        },
+
+        setAddress: function(val, callback) {
+            this.geocoder.geocode({'address': val}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var lat = results[0].geometry.location.lat();
+                    var lng = results[0].geometry.location.lng();
+                    var latLng = new google.maps.LatLng(lat, lng);
+                    if (callback) callback(latLng);
+                } else {
+                    if (callback) callback();
+                }
+            });
+        },
+
+        getMarker: function(position, title) {
+            var that = this;
+            return new google.maps.Marker({
+                map: that.map,
+                draggable: true,
+                position: position,
+                title: title,
+                icon: that.icon
+            });
+        },
+
         refreshMap: function(e) {
             var place = app.map.getCenter();
             if (!place) return;
@@ -80,36 +72,33 @@ define([
                 data: {latitude: place.K, longitude: place.G},
                 success: function(nearest_city, response, options) {
                     nearest_city && app.collections["city"].add(nearest_city);
-                    app.views["home"].citySelect.val(nearest_city.id);
+                    app.views["home"].view.citySelect.val(nearest_city.id);
                 }
             });
         },
 
-        render: function() {
-            this.html = $(this.template({
-            }));
-            this.$el.html(this.html);
-            this.renderMap();
+        getMapOptions: function() {
+            return {
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: this.center,
+                mapTypeControl: false,
+                streetViewControl: false,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_TOP
+                }
+            };
         },
 
-        renderMap: function() {
+        render: function() {
+            var that = this;
 
-            app.map = new google.maps.Map(document.getElementById("map-canvas"), getMapOptions());
+            this.html = $(this.template());
+            this.$el.html(this.html);
+            
+            this.map = new google.maps.Map(document.getElementById("map-canvas"), this.getMapOptions());
 
-            // Bias the SearchBox results towards current map's viewport.
-            app.map.addListener('bounds_changed', function() {
-                app.searchBox.setBounds(app.map.getBounds());
-            });
-
-            app.map.addListener('center_changed', function() {
-                var args = arguments;
-                var that = this;
-                app.events["centerChanged"].listeners.forEach(function(listener) {
-                    if (listener) listener.apply(that, args);
-                });
-            });
-
-            app.promises.mapLoaded.resolve();
+            this.promise.resolve();
 
         }
 

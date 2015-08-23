@@ -1,14 +1,16 @@
 define([
-    "core/view",
+    "backbone",
     "underscore",
-    "text!templates/join.html",
-], function(View, _, template) {
+    "text!templates/categories.html"
+], function(Backbone, _, template) {
 
-    return View.extend({
+    return Backbone.View.extend({
 
         template: _.template(template),
 
+
         events: {
+
         },
 
         initialize: function() {
@@ -17,7 +19,6 @@ define([
 
         render: function() {
             this.html = $(this.template({
-
             }));
             this.$el.html(this.html);
         }

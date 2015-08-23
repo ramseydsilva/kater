@@ -1,10 +1,10 @@
 define([
-    "backbone",
+    "core/view",
     "underscore",
     "text!templates/login.html",
-], function(Backbone, _, template) {
+], function(View, _, template) {
 
-    return Backbone.View.extend({
+    return View.extend({
 
         template: _.template(template),
 
