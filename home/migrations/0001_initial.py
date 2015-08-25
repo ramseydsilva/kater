@@ -11,8 +11,8 @@ from django.conf import settings
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('cities', '__first__'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('cities', '0001_initial'),
     ]
 
     operations = [
@@ -22,11 +22,11 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('first_name', models.CharField(max_length=100, null=True, blank=True)),
                 ('last_name', models.CharField(max_length=100, null=True, blank=True)),
-                ('email', models.EmailField(max_length=300)),
+                ('email', models.EmailField(max_length=300, null=True, blank=True)),
                 ('mobile_number', models.CharField(max_length=20, null=True, blank=True)),
                 ('street_address1', models.CharField(max_length=300, null=True, blank=True)),
                 ('street_address2', models.CharField(max_length=300, null=True, blank=True)),
-                ('zip_code', models.CharField(max_length=10)),
+                ('zip_code', models.CharField(max_length=10, null=True, blank=True)),
                 ('point', django.contrib.gis.db.models.fields.PointField(srid=4326, null=True, blank=True)),
             ],
         ),
@@ -169,13 +169,13 @@ class Migration(migrations.Migration):
                 ('mobile_number', models.CharField(max_length=20, null=True, blank=True)),
                 ('other_number', models.CharField(max_length=20, null=True, blank=True)),
                 ('birthday', models.DateTimeField(null=True, blank=True)),
+                ('occupation', models.CharField(max_length=30, null=True, blank=True)),
                 ('sex', models.CharField(blank=True, max_length=10, null=True, choices=[(b'M', b'Male'), (b'F', b'Female')])),
                 ('subscribe_newsletter', models.BooleanField(default=False)),
                 ('send_sms', models.BooleanField(default=False)),
                 ('payment_method', models.CharField(default=b'Cash', max_length=10, choices=[(b'Cash', b'Cash on Delivery'), (b'CC', b'Credit Card')])),
                 ('addresses', models.ManyToManyField(related_name='profile', through='home.AddressBook', to='home.Address')),
                 ('billing_address', models.ForeignKey(related_name='billing_profile', blank=True, to='home.Address', null=True)),
-                ('occupation', models.ForeignKey(blank=True, to='home.Occupation', null=True)),
                 ('user', models.OneToOneField(related_name='profile', to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -187,7 +187,6 @@ class Migration(migrations.Migration):
                 ('service', models.PositiveIntegerField(default=0)),
                 ('ambience', models.PositiveIntegerField(default=0)),
                 ('value', models.PositiveIntegerField(default=0)),
-                ('overall', models.PositiveIntegerField(default=0)),
                 ('recommend_to_friends', models.BooleanField(default=False)),
                 ('date', models.DateTimeField(auto_now_add=True)),
             ],
@@ -221,7 +220,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='item',
             name='category',
-            field=models.ForeignKey(to='home.ItemCategory'),
+            field=models.ForeignKey(related_name='items', to='home.ItemCategory'),
         ),
         migrations.AddField(
             model_name='item',

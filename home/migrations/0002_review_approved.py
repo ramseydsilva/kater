@@ -11,8 +11,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='rating',
-            name='overall',
+        migrations.AddField(
+            model_name='review',
+            name='approved',
+            field=models.BooleanField(default=True),
         ),
     ]
