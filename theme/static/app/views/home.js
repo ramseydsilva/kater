@@ -141,6 +141,15 @@ define([
             this.capacity_upper = this.$('#capacity-upper-input');
             this.all_female_servers = this.$('#all-female-servers-checkbox');
             this.arabic_speaking_only = this.$('#arabic-speaking-only-checkbox');
+            this.$('.nstSlider').nstSlider({
+                "left_grip_selector": ".leftGrip",
+                "right_grip_selector": ".rightGrip",
+                "value_bar_selector": ".bar",
+                "value_changed_callback": function(cause, leftValue, rightValue) {
+                    that.$('.leftLabel').val(leftValue).trigger("change");
+                    that.$('.rightLabel').val(rightValue).trigger("change");
+                }
+            });
         }
 
     });

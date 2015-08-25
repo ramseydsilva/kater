@@ -7,37 +7,9 @@ from utils import AjaxableResponseMixin
 from django.views.decorators.csrf import csrf_exempt
 
 
-class HomeView(TemplateView):
+class AppView(TemplateView):
     template_name = "home/index.html"
 
     def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
-        context['categories'] = Category.objects.filter(parent=None)
+        context = super(AppView, self).get_context_data(**kwargs)
         return context
-
-class PageView(TemplateView):
-    template_name = "home/page.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(PageView, self).get_context_data(**kwargs)
-        context['navigation'] = get_object_or_404(Navigation, slug=self.kwargs['nav_slug'])
-        return context
-
-class ContactView(AjaxableResponseMixin, CreateView):
-    template_name = 'home/contact.html'
-    form_class = ContactForm
-    model = Contact
-
-    def get_context_data(self, **kwargs):
-        context = super(ContactView, self).get_context_data(**kwargs)
-        context['navigation'] = Navigation.objects.filter(slug='contact').first()
-        context['success'] = "success" in self.request.GET
-        return context
-
-    def get_success_url(self):
-        return "%s?success=True" % (reverse('contact'))
-
-    def form_valid(self, form, **kwargs):
-        if not self.request.user.is_anonymous():
-            form.instance.created_by = self.request.user
-        return super(ContactView, self).form_valid(form)

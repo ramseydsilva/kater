@@ -11,9 +11,9 @@ from rest_framework.decorators import list_route, detail_route
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.filters import DjangoFilterBackend
+from home.models import *
 import django_filters
-from models import *
-from serializers import *
+from .serializers import *
 
 
 class AreaViewSet(viewsets.ModelViewSet):
@@ -180,5 +180,3 @@ class LogoutView(APIView):
         logout(request)
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
-
-

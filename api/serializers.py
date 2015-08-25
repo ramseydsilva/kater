@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework import permissions
 from cities.models import City
 from django.contrib.postgres.fields import ArrayField
-from .models import *
+from home.models import *
 
 
 class AreaSerializer(serializers.ModelSerializer):
