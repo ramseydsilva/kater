@@ -37,6 +37,8 @@ define([
             app.filter.on("change:area", this.changeArea, this);
             app.filter.on("change:category", this.changeCategory, this);
             app.filter.on("change:date", this.changeDate, this);
+            app.filter.on("change:all_female_servers", this.allFemaleServersChecked, this);
+            app.filter.on("change:arabic_speaking_only", this.arabicSpeakingOnlyChecked, this);
         },
 
         filterCaterers: function(e) {
@@ -118,6 +120,18 @@ define([
             app.filter.set("arabic_speaking_only", this.arabic_speaking_only.is(":checked"));
         },
 
+        allFemaleServersChecked: function(model) {
+            if (model.attributes.all_female_servers != this.all_female_servers.is(":checked")) {
+                this.all_female_servers.click();
+            }
+        },
+
+        arabicSpeakingOnlyChecked: function(model) {
+            if (model.attributes.arabic_speaking_only != this.arabic_speaking_only.is(":checked")) {
+                this.arabic_speaking_only.click();
+            }
+        },
+
         toggleAdvancedOptions: function() {
             this.advanceBox.toggle();
         },
@@ -126,7 +140,7 @@ define([
             var that = this;
 
             this.html = $(this.template({
-
+                filter: app.filter
             }));
             this.$el.html(this.html);
             this.areaSelect = this.$('#area-select');
@@ -150,6 +164,10 @@ define([
                     that.$('.rightLabel').val(rightValue).trigger("change");
                 }
             });
+
+            this.changeDate(app.filter);
+            this.allFemaleServersChecked(app.filter);
+            this.arabicSpeakingOnlyChecked(app.filter);
         }
 
     });

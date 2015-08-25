@@ -33,7 +33,7 @@ define([
             var that = this;
 
             this.html = $(this.template({
-
+                filter: app.filter
             }));
             this.$el.html(this.html);
 

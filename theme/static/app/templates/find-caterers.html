@@ -5,7 +5,7 @@
         <form>
         <div class="form-group">
             <label class="control-label">Date</label>
-            <input type="text" class="datepicker form-control input-sm" />
+            <input type="text" class="datepicker form-control input-sm" value="<%= filter.attributes.date %>" />
             <i class="fa fa-calendar"></i>
         </div>
         <div class="form-group">
@@ -56,10 +56,10 @@
             </div>
             <div class="form-group">
                 <div class="checkbox">
-                    <label><input type="checkbox" id="all-female-servers-checkbox2">All Female Servers</label>
+                    <label><input type="checkbox" id="all-female-servers-checkbox2" <%= filter.attributes.all_female_servers ? "checked=checked" : "" %>>All Female Servers</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" id="arabic-speaking-only-checkbox2">Arabic Speaking</label>
+                    <label><input type="checkbox" id="arabic-speaking-only-checkbox2" <%= filter.attributes.arabic_speaking_only ? "checked=checked" : "" %>>Arabic Speaking</label>
                 </div>
             </div>
             <div class="form-group">

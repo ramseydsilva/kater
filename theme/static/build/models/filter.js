@@ -1,1 +1,1 @@
-define(["backbone"],function(n){return n.Model.extend({initialize:function(){}})});
+define(["backbone"],function(e){return e.Model.extend({defaults:{all_female_servers:!1,arabic_speaking_only:!1},initialize:function(){}})});
