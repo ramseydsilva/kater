@@ -64,12 +64,12 @@ text!templates/contact-us.html
 /home/ramsey/projects/kater/dev/src/theme/static/app/views/contact-us.js
 text!templates/home.html
 /home/ramsey/projects/kater/dev/src/theme/static/lib/js/bootstrap-datepicker.js
-/home/ramsey/projects/kater/dev/src/theme/static/lib/js/jquery.nstSlider.min.js
 require-css!../lib/css/jcarousel.responsive
 /home/ramsey/projects/kater/dev/src/theme/static/lib/js/jquery.jcarousel.min.js
 /home/ramsey/projects/kater/dev/src/theme/static/lib/js/jcarousel.responsive.js
 /home/ramsey/projects/kater/dev/src/theme/static/app/views/home.js
 text!templates/find-caterers.html
+/home/ramsey/projects/kater/dev/src/theme/static/lib/js/jquery.nstSlider.min.js
 /home/ramsey/projects/kater/dev/src/theme/static/app/views/find-caterers.js
 text!templates/full-banner.html
 /home/ramsey/projects/kater/dev/src/theme/static/app/views/full-banner.js

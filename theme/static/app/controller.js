@@ -83,6 +83,10 @@ define([
                     view: "views/banner",
                     el: document.getElementById("banner")
                 },
+                "brand-carousel": {
+                    view: "views/brand-carousel",
+                    el: document.getElementById("brand-carousel")
+                },
                 "full-banner": {
                     view: "views/full-banner",
                     el: document.getElementById("full-banner")
@@ -100,7 +104,7 @@ define([
                     view: "views/home",
                     route: "",
                     el: document.getElementById("home"),
-                    depends: ["user-nav"]
+                    depends: ["user-nav", "brand-carousel"]
                 },
                 "about-us": {
                     view: "views/about-us",
