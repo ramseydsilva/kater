@@ -1,0 +1,1 @@
+define(["core/authSync"],function(n){return n.Model.extend({initialize:function(){}})});

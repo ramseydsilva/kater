@@ -1,1 +1,0 @@
-define(["core/authSync","../models/job"],function(e,o){return e.Collection.extend({model:o,url:"/api/jobs/"})});

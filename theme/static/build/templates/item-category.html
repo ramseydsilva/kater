@@ -1,0 +1,23 @@
+<div class="clearfix">
+    <div class="menImg col-md-3 col-sm-3 col-xs-4">
+        <h3 class="visible-xs"><%= model.attributes.title %></h3>
+        <img src="<%= model.attributes.image %>" />
+    </div>
+    <div class="menList col-md-9 col-sm-9 col-xs-8">
+        <div class="me1 col-md-9 col-sm-9 col-xs-12">
+            <h3 class="hidden-xs"><%= model.attributes.title %></h3>
+            <p><%= model.attributes.description %></p>
+        </div>
+        <div class="me2 col-md-3 col-sm-3 col-xs-12">
+            <h3><%= model.attributes.price %></h3>
+            <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
+        </div>
+    </div>
+</div>
+<!--Menu Options-->
+<div class="menuOptions">
+    <div class="clearfix ChooseItem">
+        <h3>Please choose an item from <%= model.attributes.title %></h3>
+        <table class="item-list radOpt table table-bordered"></table>
+    </div>
+</div>

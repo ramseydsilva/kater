@@ -49,7 +49,8 @@ define([
         require(["views/"+this.name], function(MyBackboneView) {
             that["view"] = new MyBackboneView({
                 name: that.name,
-                el: that.$el
+                el: that.$el,
+                arguments: that.arguments
             });
             that["view"].name = that.name;
             that.loadedView = true;
@@ -60,6 +61,7 @@ define([
 
     Component.prototype.loadView = function() {
         var that = this;
+        that.arguments = arguments;
         if (!this.loadedView) {
             var promises = [];
             this.depends.forEach(function(dependency) {
@@ -73,8 +75,7 @@ define([
             });
             that.show();
         }
-
-        if (this.route !== null) {
+        if (this.route !== null && this.route !== undefined) {
             // hide non dependencies
             var showns = _.where(app.components, { shown: true });
             showns.forEach(function(shown) {
@@ -83,7 +84,6 @@ define([
                 }
             });
         }
-
     }
 
     Component.prototype.registerRoute = function(route) {
@@ -94,7 +94,7 @@ define([
         var that = this;
         this.promise.done(function() {
             that.shown = true;
-            that.view.show();
+            that.view.show(that.arguments);
         });
     },
 
@@ -102,7 +102,7 @@ define([
         var that = this;
         this.promise.done(function() {
             that.shown = false;
-            that.view.hide();
+            that.view.hide(that.arguments);
         });
     }
 

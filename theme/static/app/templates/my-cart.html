@@ -1,0 +1,56 @@
+<div class="mainContentTop tabsContent">
+    <h2 class="h2Hdng">My Cart</h2>
+</div>
+<div class="contentbdox">
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="abovedate">April 28 Friday   |   6:00 PM - 9:00 PM</div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2">Restaurant Name</th>
+                        <th width="50%">Product Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Sub Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items"></tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="innerpage">
+                <div class="carttop clearfix">
+                    <div class="col-md-6">
+                        <table class="table"> 
+                            <tr class="subTotl">
+                                <td>Sub Total</td>
+                                <td class="text-right sub_total"><%= model.attributes.sub_total %>KD</td>
+                            </tr>
+                            <tr class="subTotl">
+                                <td>Discount</td>
+                                <td class="text-right discount"><%= model.attributes.discount %>%</td>
+                            </tr>
+                            <tr class="grandTotal">
+                                <td>Grand Total</td>
+                                <td class="text-right grand_total"><%= model.attributes.grand_total %>KD</td>
+                            </tr> 
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <textarea rows="5" class="form-control" placeholder="Special Request" class="special-request"></textarea>
+                    </div>
+                </div>
+                <div class="cartbuttons clearfix text-center">
+                    <a class="add-more btn btn-close-two">Add More</a>
+                    <a href="/checkout/" class="live btn btn-close <%= model.attributes.sub_total > 0 ? "" : "hidden" %> checkoutBtn">order now</a> 
+                    <a class="clear-all btn btn-close-two">Clear all</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

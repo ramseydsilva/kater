@@ -1,0 +1,48 @@
+{% load i18n staticfiles %}
+
+<div id="header">
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container-fluid clearfix">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand live" href="{% url "home" %}"><img src="{% static "lib/images/logo.png" %}" width="62" height="82" /></a>
+        </div>
+
+        <div id="user-nav"></div>
+
+        <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1"> 
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{% url "home" %}" class="live"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li>
+                <a href="{% url "caterers" %}" class="live"><i class="fa fa-cutlery"></i> Caterers</a>
+                </li>
+                <li>
+                    <a href="{% url "place-order" %}" class="live"><i class="fa fa-truck"></i> Orders</a>
+                </li>   
+                <li class="dropdown search">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span><i class="fa fa-search"></i> Search</span> </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                          <form class="navbar-form navbar-left" role="search">
+                              <div class="form-group">
+                              <input class="form-control" placeholder="Search" type="text">
+                              </div>
+                              <button type="submit" class="btn btn-default btn-block submitBtn">Submit</button>
+                          </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+</div>
+

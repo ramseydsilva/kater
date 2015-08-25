@@ -1,0 +1,21 @@
+<td><%= model.attributes.title %></td>
+<td><%= model.attributes.price %></td>
+<td class="" width="200">
+    <div class="input-group">
+        <span class="input-group-btn">
+            <button type="button" class="btn-number" data-type="minus" data-field="quantity">
+                <i class="quantity_arrow quantity_arrow_decr fa fa-angle-left"></i>
+            </button>
+        </span>
+        <input type="text" name="quantity" class="form-control input-number" value="0" min="0" max="10">
+        <span class="input-group-btn">
+            <button type="button" class="btn-number" data-type="plus" data-field="quantity">
+                <i class="quantity_arrow quantity_arrow_incr fa fa-angle-right"></i>
+            </button>
+        </span>
+    </div>
+</td>
+<td class="action" width="200">
+    <button class="btn btn-default add btn-success">Add</button>
+    <button class="btn btn-default hidden remove btn-warning">remove</button>
+</td>

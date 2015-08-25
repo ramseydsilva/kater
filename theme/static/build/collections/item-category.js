@@ -1,0 +1,1 @@
+define(["core/collection","../models/item-category"],function(e,t){return e.extend({idAttribute:"id",model:t,initialize:function(e,t){this.caterer=t.caterer},url:function(){return this.caterer.url()+"/menu"}})});

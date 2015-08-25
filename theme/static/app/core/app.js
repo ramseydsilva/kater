@@ -28,16 +28,12 @@ define([
 
     App.prototype.register = function(name, options) {
         if (this.components[name]) {
-            console.log("already loaded");
             return this.components[name];
         } else {
             if (!options) {
                 options = this.options[name];
             }
             var component = new Component(name, options, this.router);
-            if (!this.$el.hasChildNodes(component.$el)) {
-                this.$el.appendChild(component.$el);
-            }
             this.components[name] = component;
         }
     };

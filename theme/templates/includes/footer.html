@@ -1,13 +1,53 @@
-<footer id="footer" class="dark clearfix ">
-    <div class="subfooter">
-        <div class="container">
-            <div class="subfooter-inner">
-                <div class="row">
-                    <div class="col-md-12">
-                        &copy; 2015 RentSomeFolks.com
-                    </div>
+{% load i18n staticfiles %}
+
+<div id="footertop">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Useful Links</h3>
+                <div class="links">
+                    <a class="live" href="{% url "about-us" %}">About Kater</a>
+                    <a class="live" href="{% url "privacy-policy" %}">Privacy Policy</a>
+                    <a class="live" href="{% url "terms-and-conditions" %}">Terms & Conditions</a>
+                    <a class="live" href="{% url "contact-us" %}">Contact Us</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3>Newsletter</h3>
+                <div class="newsletter">
+                    <input type="text" class="form-control" placeholder="Your email address" />
+                    <i class="fa fa-envelope"></i>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h3>Follow Along</h3>
+                <div class="followalong">
+                    <a href="#"><i class="fa fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
     </div>
-</footer>
+</div>
+
+<div id="footerbottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-7">
+                <p>© Kater 605, 6th Floor, Old Education Ministry Building, Mirqab, Kuwait.</p>
+                <p>Tel: +965 2239 5022   |   Fax: +965 2239 5022   |   <a href="#">info@kater.com.kw</a></p>                    
+            </div>
+            <div class="col-md-6 col-sm-5">
+                <div class="payicons">
+                    <img src="{% static "lib/images/pay-icon-1.jpg" %}" />
+                    <img src="{% static "lib/images/pay-icon-2.jpg" %}" />
+                    <img src="{% static "lib/images/pay-icon-3.jpg" %}" />
+                    <img src="{% static "lib/images/pay-icon-4.jpg" %}" />
+                    <img src="{% static "lib/images/pay-icon-5.jpg" %}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

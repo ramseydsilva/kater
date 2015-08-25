@@ -1,0 +1,1 @@
+define(["core/collection","../models/cart-item"],function(e,i){return e.extend({model:i,initialize:function(){}})});

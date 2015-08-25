@@ -1,0 +1,1 @@
+define(["core/authSync"],function(e){return e.Model.extend({idAttribute:"username",url:"/api/profile/",isNew:function(){return!1},initialize:function(){}})});

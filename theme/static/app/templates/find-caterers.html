@@ -1,0 +1,74 @@
+<div class="sideBar">
+    <a href="#" class="findbtn visible-xs btn btn-success">Find Caterers</a>
+    <div class="filterbox">
+        <h3>Find Caterers</h3>
+        <form>
+        <div class="form-group">
+            <label class="control-label">Date</label>
+            <input type="text" class="datepicker form-control input-sm" />
+            <i class="fa fa-calendar"></i>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Area</label>
+            <select id="area-select2" class="form-control input-sm">
+                <option value="">Select Area</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Catering Company</label>
+            <select id="category-select2" class="form-control input-sm">
+                <option value="">Select Category</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <a href="#" class="advcebtn">Advanced Options <i class="fa fa-angle-right"></i> <i class="fa fa-angle-down"></i></a>
+        </div>
+        <div class="hideadvance">
+            <div class="form-group">
+                <label class="control-label">Price (KD)</label>
+                <div class="slider">
+                    <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="800">
+                        <div class="bar"></div>
+                        <div class="leftGrip"></div>
+                        <div class="rightGrip"></div>
+                    </div>
+                    <div class="formgroup"> 
+                        <input type="text" id="price-lower-input2" class="leftLabel form-control" value="" />  
+                        <input type="text" id="price-upper-input2" class="rightLabel form-control" value="" />  
+                        <input type="submit" class="btn btn-search" value="Search" /> 
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Capacity (persons)</label>
+                <div class="slider">
+                    <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="800">
+                        <div class="bar"></div>
+                        <div class="leftGrip"></div>
+                        <div class="rightGrip"></div>
+                    </div>
+                    <div class="formgroup">
+                        <input type="text" id="capacity-lower-input2" class="leftLabel form-control" value="" />
+                        <input type="text" id="capacity-upper-input2" class="rightLabel form-control" value="" />
+                        <input type="submit" class="btn btn-search" value="Search" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="all-female-servers-checkbox2">All Female Servers</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="arabic-speaking-only-checkbox2">Arabic Speaking</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-searchs btn-block" value="Find Caterers" />
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="sideBarImg text-center hidden-xs hidden-sm">
+        <img src="/static/lib/images/rightbanner.jpg" />
+    </div>
+</div>

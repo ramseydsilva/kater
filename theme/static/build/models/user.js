@@ -1,1 +1,1 @@
-define(["backbone"],function(n){return n.Model.extend({initialize:function(){}})});
+define(["core/authSync","./profile","./billing"],function(i,e,t){return i.Model.extend({idAttribute:"username",url:"/api/user/",initialize:function(){this.on("change:username",this.getProfile,this),this.profile=new e({user:this}),this.billing=new t({user:this})},getProfile:function(){this.profile.fetch(),this.billing.fetch()},logout:function(){this.fetch({url:"/api/logout/"})}})});

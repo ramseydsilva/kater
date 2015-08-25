@@ -12,7 +12,7 @@ define(function() {
             "handlebars": "../lib/handelbars",
             "underscore": "../lib/underscore",
             "backbone": "../lib/backbone",
-            "bootstrap": "../lib/bootstrap",
+
             "typeahead": "../lib/bootstrap3-typeahead.min",
             "modernizr": "../lib/modernizr",
             "countTo": "../lib/jquery.countTo",
@@ -37,8 +37,18 @@ define(function() {
             "style-css": "../lib/css/style",
             "custom-css": "../lib/css/custom",
 
-            "rentsomefolks": "./controller",
+            "kater": "./controller",
 
+            // new
+            "bootstrap": "../lib/js/bootstrap",
+            "bootstrap-datepicker": "../lib/js/bootstrap-datepicker",
+            "jquery-carousel": "../lib/js/jquery.jcarousel.min",
+            "jquery-carousel-responsive": "../lib/js/jcarousel.responsive",
+            "jquery-nstslider": "../lib/js/jquery.nstSlider.min",
+            "jquery-bxslider": "../lib/js/jquery.bxslider",
+            "jquery-bxslider-css": "../lib/css/jquery.bxslider"
+
+                        
         },
         map: {
             "*": { "css": "require-css" }
@@ -65,7 +75,13 @@ define(function() {
             "countTo": ["jquery"],
             "browser": ["jquery"],
             "smoothScroll": ["jquery"],
-            "template": ["jquery", "bootstrap", "modernizr", "browser", "smoothScroll"]
+            "template": ["jquery", "bootstrap", "modernizr", "browser", "smoothScroll"],
+
+            // new
+            "jquery-nstslider": ["jquery"],
+            "bootstrap-datepicker": ["bootstrap"],
+            "jquery-carousel": ["jquery", "css!../lib/css/jcarousel.responsive"],
+            "jquery-carousel-responsive": ["jquery-carousel"]
         }
     });
 });

@@ -1,0 +1,1 @@
+define(["core/view","underscore","text!templates/place-order.html"],function(e,t,i){return e.extend({template:t.template(i),events:{},initialize:function(){this.render()},render:function(){this.html=$(this.template({})),this.$el.html(this.html)}})});

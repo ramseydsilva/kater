@@ -1,110 +1,64 @@
 {% load i18n staticfiles %}
 
-<!DOCTYPE html>
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-	<!--<![endif]-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home</title>
 
-    <head lang="{% block lang %}en{% endblock %}">
-    {% block head %}
-      <meta charset="utf-8">
-      <title>Rent Some Folks</title>
-      <meta name="description" content="Rent some folks, short term jobs, make pocket change">
-      <meta name="author" content="rentsomefolks.com">
+<link type="text/css" rel="stylesheet" href="{% static "lib/css/font-awesome.css" %}" />
+<link type="text/css" rel="stylesheet" href="{% static "lib/css/bootstrap.css" %}" />
+<link type="text/css" rel="stylesheet" href="{% static "lib/css/datepicker.css" %}" />
+<link type="text/css" rel="stylesheet" href="{% static "lib/css/style.css" %}" />
+<link type="text/css" rel="stylesheet" href="{% static "lib/css/jquery.nstSlider.css" %}">
+<link type="text/css" rel="stylesheet" href="{% static "lib/css/jquery.bxslider.css" %}">
+<!-- Favicon -->
+<link rel="shortcut icon" href="lib/images/favicon.ico">
 
-      <!-- Mobile Meta -->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" data-main="/static/build/main" src="{% static "lib/require-2.1.11.min.js" %}" %}"></script>
 
-      <link rel="stylesheet" type="text/css" href="{% static "lib/bootstrap/css/bootstrap.css" %}" />
-      <link rel="stylesheet" type="text/css" href="{% static "lib/fonts/font-awesome/css/font-awesome.css" %}" />
-      <link rel="stylesheet" type="text/css" href="{% static "lib/css/style.css" %}" />
-      <link rel="stylesheet" type="text/css" href="{% static "lib/css/custom.css" %}" />
-
-      <script type="text/javascript" data-main="/static/app/main" src="{% static "lib/require-2.1.11.min.js" %}"></script>
-
-      {% block extra_head %}{% endblock %}
-  {% endblock %}
 </head>
+<body> 
 
-<body class="no-trans {% block body_class %}{% endblock %}">
+    {% include "includes/header.html" %}
 
-  <div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
-
-  <div class="page-wrapper">
-
-    <div class="header-container">
-        <div class="header-top dark">
-            <div class="container-fluid">
-                <div id="header-top-second" class="clearfix">
-                    <div class="header-top-dropdown text-right">
+    <div id="full-page">
+        <section id="home"></section>
+        <div class="container-fluid" id="innerpage">
+            <section class="row" id="full-banner"></section>
+            <section class="row" id="about-us"></section>
+            <section class="row" id="privacy-policy"></section>
+            <section class="row" id="terms-and-conditions"></section>
+            <section class="row" id="contact-us"></section>
+        </div>
+        <section id="about-us"></section>
+    </div>
+    <div id="two-column">
+        <div class="container-fluid" id="innerpage">
+            <form>
+                <div class="row">
+                    <div class="col-md-3">
+                        <section id="cart"></section>
+                        <section id="find-caterers"></section>
+                    </div>
+                    <div class="col-md-9">
+                        <section id="banner"></section>
+                        <section id="place-order"></section>
+                        <section id="caterers"></section>
+                        <section id="caterer"></section>
+                        <section id="my-cart"></section>
+                        <section id="checkout"></section>
+                        <section id="profile-page"></section>
                     </div>
                 </div>
-            </div>
-        </div>
-        {% block header_nav %}
-            {% include "includes/headernav.html" %}
-        {% endblock %}
-    </div>
-
-    <div class="container-fluid" id="center-container">
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="title-container posFixed mt-10">
-                    <h1 class="title pull-left"></h1>
-                    <a id="main-back" class="back btn btn-default-transparent pull-right mr-40"><i class="fa fa-arrow-left pr-10"></i> Back</a>
-                </div>
-            </div>
-
-
-            <div class="col-lg-8 pt-20" id="app-container">
-                <section class="full-width" id="pageTitle"></section>
-                <section style="display: none;" class="full-width" id="login"></section>
-                <section style="display: none;" class="full-width" id="join"></section>
-                <section style="display: none;" class="full-width" id="profile"></section>
-                <section style="display: none;" class="full-width" id="jobs"></section>
-                <section style="display: none;" class="full-width" id="folks"></section>
-                <section style="display: none;" class="full-width" id="user"></section>
-                <section class="full-width" id="map"></section>
-                <section class="full-width" id="location"></section>
-                <section class="full-width" id="home"></section>
-                <section style="display: none;" class="full-width" id="job"></section>
-                <section style="display: none;" class="full-width" id="jobPost"></section>
-                <section style="display: none;" class="full-width" id="jobReview"></section>
-            </div>
-
-            <div class="col-lg-2">
-                <div class="row"><div class="col-lg-12">
-                    <ul id="main-nav" class="posFixed pull-left">
-                        <li><h1><a class="live" href="{% url "index" %}">Home</a></h1></li>
-                        <li>
-                            <h1><a class="live" href="{% url "jobs" %}">Jobs</a></h1>
-                            <ul>
-                                <li><h2><a class="live" href="{% url "jobs-new" %}">Post a Job</a></h2></li>
-                            </ul>
-                        </li>
-                        <li><h1><a class="live" href="{% url "folks" %}">Folks</a></h1></li>
-                        <div id="user-menu"></div>
-                    </ul>
-                </div></div>
-            </div>
+            </form>
         </div>
     </div>
 
     {% include "includes/footer.html" %}
-
-  </div>
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', '{{ site.google_analytics_code }}', 'auto');
-    ga('send', 'pageview');
-  </script>
-
-  {% block extra_scripts %}{% endblock %}
+    {% include "includes/modal.html" %}
 
 </body>
 </html>

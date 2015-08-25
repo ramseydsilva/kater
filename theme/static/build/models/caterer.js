@@ -1,0 +1,1 @@
+define(["backbone","../collections/item-category","../collections/review"],function(e,i,t){return e.Model.extend({initialize:function(){this.menu=new i([],{caterer:this}),this.reviews=new t([],{caterer:this}),this.menu.fetch(),this.reviews.fetch()}})});

@@ -1,28 +1,112 @@
-<div class="row space-bottom">
-    <div class="col-md-6">
-        <h3>Address</h3>
-        <input id="address" name="city" type="text" class="form-control" value="Whitefield, bangalore" />
-    </div>
-    <div class="col-md-6">
-        <h3>City</h3>
-        <select id="city" name="city" class="form-control"></select>
+<div id="homebody">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <big>Find Caterers</big>
+            <div class="homesearch row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Date</label>
+                        <input type="text" class="form-control datepicker" placeholder="2015-04-26"> 
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Area</label>
+                        <select id="area-select" class="form-control">
+                            <option value="">Select Area</option>
+                        </select>
+                    </div>             	
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Category</label>
+                        <select id="category-select" class="form-control">
+                            <option value="">Select Category</option> 
+                        </select>
+                    </div>             	
+                </div>
+                <div class="col-md-3 advancelink">
+                    <a href="#">Advanced Options <i class="fa fa-caret-down"></i></a>
+                </div>
+                <div class="advncebox">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Price (KD)</label>
+                            <div class="slider">
+                                <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="800">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="formgroup"> 
+                                    <input type="text" id="price-lower-input" class="leftLabel form-control" value="" />  
+                                    <input type="text" id="price-upper-input" class="rightLabel form-control" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Price (KD)</label>
+                            <div class="slider">
+                                <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="800">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="formgroup"> 
+                                    <input type="text" id="capacity-lower-input" class="leftLabel form-control" value="" />  
+                                    <input type="text" id="capacity-upper-input" class="rightLabel form-control" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group advncecheck">
+                            <div class="checkbox">
+                              <label><input type="checkbox" id="all-female-servers-checkbox"> All Female Servers</label>
+                            </div>
+                            <div class="checkbox">
+                              <label><input type="checkbox" id="arabic-speaking-only-checkbox">Arabic Speaking</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 search-btn">
+                    <a id="searchBtn" href="/caterers/" class="live btn btn-warning btn-lg">Search</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row space-bottom">
-    <div class="col-md-12">
-        <h3>Select categories</h3>
-        <div id="category-list"></div>
+</div>
+
+<div id="brandouter">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+              <div class="jcarousel-wrapper">
+                <div class="jcarousel">
+                    <ul>
+                        <li><img src="/static/lib/images/brand-1.jpg"></li>
+                        <li><img src="/static/lib/images/brand-2.jpg"></li>
+                        <li><img src="/static/lib/images/brand-3.jpg"></li>
+                        <li><img src="/static/lib/images/brand-4.jpg"></li>
+                        <li><img src="/static/lib/images/brand-5.jpg"></li>
+                        <li><img src="/static/lib/images/brand-6.jpg"></li>
+                        <li><img src="/static/lib/images/brand-7.jpg"></li>
+                        <li><img src="/static/lib/images/brand-8.jpg"></li>
+                        <li><img src="/static/lib/images/brand-9.jpg"></li>.
+                        <li><img src="/static/lib/images/brand-7.jpg"></li>
+                        <li><img src="/static/lib/images/brand-8.jpg"></li>
+                    </ul>
+                </div>
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row space-bottom hidden" id="skill-list-container">
-    <div class="col-md-12 ">
-        <h3>Select skills</h3>
-        <div id="skill-list"></div>
-    </div>
-</div>
-<div class="row hidden pt-10" id="home-buttons">
-    <div class="col-md-12 text-center">
-        <a href="/folks/" class="live btn btn-lg btn-animated btn-info">Find Folks <i class="fa fa-user pl-10"></i></a>
-        <a href="/jobs/" class="live btn btn-lg btn-animated btn-warning">Find Jobs <i class="fa fa-briefcase pl-10"></i></a>
-    </div>
 </div>

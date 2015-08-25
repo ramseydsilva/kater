@@ -1,0 +1,35 @@
+<div class="rvwShowBx clearfix">
+    <div class="col-sm-3">
+        <% if (model.attributes.rating) { %>
+        <div class="starRating">
+            <i class="fa fa-star <%= model.attributes.rating.overall >= 1 ? "selected" : "" %>"></i>
+            <i class="fa fa-star <%= model.attributes.rating.overall >= 2 ? "selected" : "" %>"></i>
+            <i class="fa fa-star <%= model.attributes.rating.overall >= 3 ? "selected" : "" %>"></i>
+            <i class="fa fa-star <%= model.attributes.rating.overall >= 4 ? "selected" : "" %>"></i>
+            <i class="fa fa-star <%= model.attributes.rating.overall >= 5 ? "selected" : "" %>"></i>
+        </div>
+        <ul class="list-unstyled">
+            <li>
+                <strong><%= model.attributes.rating.food %></strong> Food
+            </li>
+            <li>
+                <strong><%= model.attributes.rating.service %></strong> Service
+            </li>
+            <li>
+                <strong><%= model.attributes.rating.ambience %></strong> Ambience
+            </li>
+            <li>
+                <strong><%= model.attributes.rating.value %></strong> Value
+            </li>
+        </ul>
+        <% } %>
+    </div>
+    <div class="col-sm-9">
+        <h3><%= model.attributes.title %></h3>
+        <h6 class="rvwName">
+            <span><%= model.attributes.firs_name %> <%= model.attributes.last_name %></span>
+            Dined 5 days ago
+        </h6>
+        <p><%= model.attributes.description %></p>
+    </div>
+</div>

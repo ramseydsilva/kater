@@ -1,0 +1,27 @@
+<td>
+    <img width="47" src="<%= model.item.collection.caterer.attributes.image %>" />
+</td>
+<td>
+    <h2><a href="#mydeal" data-toggle="modal"><%= model.item.collection.caterer.attributes.name %></a></h2> 
+</td>
+<td><%= model.item.attributes.title %></td>
+<td width="200">
+    <div class="input-group">
+        <span class="input-group-btn">
+            <button type="button" class="btn-number" data-type="minus" data-field="quantity">
+                <i class="quantity_arrow quantity_arrow_decr fa fa-angle-left"></i>
+            </button>
+        </span>
+        <input type="text" name="quantity" class="form-control input-number" value="<%= model.attributes.quantity %>" min="1" max="100">
+        <span class="input-group-btn">
+            <button type="button" class="btn-number" data-type="plus" data-field="quantity">
+                <i class="quantity_arrow quantity_arrow_incr fa fa-angle-right"></i>
+            </button>
+        </span>
+    </div>
+</td>
+<td><%= model.item.attributes.price %></td>
+<td class="sub_total"><%= this.model.item.attributes.price * this.model.attributes.quantity %></td>
+<td class="action" width="200">
+    <button class="btn btn-default remove btn-warning">remove</button>
+</td>

@@ -1,13 +1,12 @@
 define([
-    "backbone",
+    "core/collection",
     "../models/user"
-], function (Backbone, UserModel) {
+], function (Collection, UserModel) {
     "use strict";
-    return Backbone.Collection.extend({
-
+    
+    return Collection.extend({
         model: UserModel,
         url: '/api/users/'
-        
     });
 
 });

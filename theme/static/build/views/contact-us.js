@@ -1,0 +1,1 @@
+define(["core/view","underscore","text!templates/contact-us.html"],function(t,e,n){return t.extend({template:e.template(n),events:{},initialize:function(){this.render()},render:function(){this.html=$(this.template({})),this.$el.html(this.html)}})});

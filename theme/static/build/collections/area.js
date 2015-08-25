@@ -1,0 +1,1 @@
+define(["core/collection","../models/area"],function(e,n){return e.extend({model:n,url:"/api/areas"})});

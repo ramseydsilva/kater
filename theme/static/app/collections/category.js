@@ -1,11 +1,14 @@
 define([
-    "backbone",
+    "core/collection",
     "../models/category"
-], function (Backbone, CategoryModel) {
+], function (Collection, CategoryModel) {
     "use strict";
-    return Backbone.Collection.extend({
+    
+    return Collection.extend({
+
         model: CategoryModel,
         url: '/api/categories'
+        
     });
 
 });

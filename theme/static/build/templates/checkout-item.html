@@ -1,0 +1,6 @@
+<td><img width="47" src="<%= model.item.collection.caterer.attributes.image %>" /></td>
+<td><h2><a href="#mydeal"><%= model.item.collection.caterer.attributes.name %></a></h2> </td>
+<td><%= model.item.attributes.title %></td>
+<td class="quantity" width="200"><%= this.model.attributes.quantity %></td>
+<td><%= model.item.attributes.price %></td>
+<td class="sub_total"><%= this.model.item.attributes.price * this.model.attributes.quantity %></td>

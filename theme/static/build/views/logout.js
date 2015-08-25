@@ -1,0 +1,1 @@
+define(["core/view","underscore"],function(e){return e.extend({events:{route:"onRoute"},initialize:function(){this.onRoute()},onRoute:function(){app.user.logout(),app.router.navigate("/",{trigger:!0})}})});

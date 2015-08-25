@@ -1,13 +1,11 @@
 define([
-    "backbone",
-    "../collections/skill"
-], function(Backbone, SkillCollection) {
+    "backbone"
+], function(Backbone) {
     "use strict";
 
     return Backbone.Model.extend({
 
         initialize: function() {
-            this.skills = [];
         }
 
     });

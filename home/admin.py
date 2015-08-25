@@ -1,5 +1,6 @@
 from django.contrib.sites.admin import SiteAdmin
 from django.contrib import admin
+from sorl.thumbnail.admin import AdminImageMixin
 from .models import *
 
 class NavigationAdmin(admin.ModelAdmin):
@@ -18,6 +19,28 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_filter = ('parent',)
 
+class AreaAdmin(admin.ModelAdmin):
+    list_display = ('name', 'city')
+
+class CatererImageInlineModelAdmin(AdminImageMixin, admin.TabularInline):
+    model = CatererGallery
+
+class CatererAdmin(admin.ModelAdmin):
+    list_display = ('name', 'rating', 'all_female_servers', 'arabic_speaking_only')
+    list_filter = ('all_female_servers', 'arabic_speaking_only')
+    prepopulated_fields = {"slug": ("name",)}
+    search_fields = ('title',)
+    inlines = [CatererImageInlineModelAdmin]
+
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ('food', 'service', 'ambience', 'value', 'overall', 'recommend_to_friends')
+
 admin.site.register(Navigation, NavigationAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Area, AreaAdmin)
+admin.site.register(Caterer, CatererAdmin)
+admin.site.register(Rating, RatingAdmin)
+admin.site.register(Review)
+admin.site.register(ItemCategory)
+admin.site.register(Item)

@@ -1,1 +1,0 @@
-define(["backbone","underscore","text!templates/job.html"],function(e,t,i){return e.View.extend({template:t.template(i),events:{},initialize:function(){this.render()},render:function(){this.html=$(this.template({model:this.model})),this.$el.html(this.html)}})});

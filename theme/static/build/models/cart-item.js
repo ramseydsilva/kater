@@ -1,0 +1,1 @@
+define(["backbone"],function(t){return t.Model.extend({initialize:function(t){this.item=t.item_model},getSubTotal:function(){return this.item.attributes.price*this.attributes.quantity}})});

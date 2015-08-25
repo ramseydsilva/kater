@@ -1,0 +1,157 @@
+<div class="mainContentTop tabsContent">
+    <h2 class="h2Hdng">Checkout</h2> 
+</div>
+<div class="contentbdox">
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="abovedate">April 28 Friday   |   6:00 PM - 9:00 PM</div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2">Restaurant Name</th>
+                        <th width="50%">Product Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Sub Total</th>
+                    </tr>
+                </thead>
+                <tbody id="checkout-items"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-md-12"> 
+            <div class="innerpage"> 
+                <div class="carttop clearfix">
+                    <div class="col-md-12">
+                        <table class="table"> 
+
+                            <tr class="nobord">
+                                <td></td>
+                            </tr>
+                            <tr class="nobord">
+                                <td style="font-size:14px"></td>
+                            </tr>
+
+                            <tr class="subTotl">
+                                <td>Sub Total</td>
+                                <td class="text-right"><%= model.attributes.sub_total %> KD</td>
+                            </tr>
+                            <tr class="subTotl">
+                                <td>Discount</td>
+                                <td class="text-right"><%= model.attributes.discount %>%</td>
+                            </tr>
+                            <tr class="grandTotal">
+                                <td>Grand Total</td>
+                                <td class="text-right"><%= model.attributes.grand_total %> KD</td>
+                            </tr> 
+                        </table>
+                    </div> 
+                </div>
+                <div class="row customForm"> 
+                    <h3 class="customTitle clearfix">Billing Address</h3>
+                    <% if (!loggedIn) { %>
+                        <div class="row alradytext">Already register? <a class="showLoginModal" data-toggle="modal">LOGIN</a></div>
+                    <% } %>
+                    <form class="clearfix">
+                        <div class="col-sm-6">
+                            <input placeholder="First Name" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="Last Name" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="Email" type="email">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="Mobile Number" type="text">
+                        </div>
+                        <div class="col-sm-12">
+                            <input placeholder="Street Address" type="text">
+                        </div>
+                        <div class="col-sm-12">
+                            <input placeholder="Street Address (optional)" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="City" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="State" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="Zip Code" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="Country" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="Password" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <input placeholder="Confirm Password" type="text">
+                        </div> 
+                    </form>
+                </div>                                    
+                <div class="row customForm">
+                    <h3 class="customTitle clearfix">Payment Method</h3>
+                    <div class="row alradytext">
+                        <div class="col-md-8 col-md-offset-3">
+                            <div class="col-md-5">
+                                <label class="radio-inline"> <input type="radio" name="payments" value="cashcard" checked="checked" />Cash on Delivery</label>
+                            </div>
+                            <div class="col-md-5">
+                                <label class="radio-inline"> <input type="radio" name="payments" value="creditcard" />Credit Card</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="selectpayment">
+                        <div class="alradypay">
+                            <div class="col-md-11 col-md-offset-1">
+                                <div class="col-md-2">
+                                    <label class="radio-inline"> <input type="radio" /> <img src="/static/lib/images/pay-icon-1.jpg" /></label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="radio-inline"> <input type="radio" /> <img src="/static/lib/images/pay-icon-2.jpg" /></label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="radio-inline"> <input type="radio" /> <img src="/static/lib/images/pay-icon-3.jpg" /></label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="radio-inline"> <input type="radio" /> <img src="/static/lib/images/pay-icon-4.jpg" /></label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="radio-inline"> <input type="radio" /> <img src="/static/lib/images/pay-icon-5.jpg" /></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix customForm">  
+                            <div class="col-md-12">
+                            <div class="col-sm-6">
+                                <label class="control-label">Card Holder</label>
+                                <input type="text" placeholder="Name">
+                            </div> 
+                            <div class="col-sm-6">
+                                <label class="control-label">Card Number</label>
+                                <input type="text" placeholder="0000 0000 0000">
+                            </div> 
+                            <div class="col-sm-6">
+                                <label class="control-label">Valid Through</label>
+                                <input type="text" placeholder="MM/YY">
+                            </div> 
+                            <div class="col-sm-6">
+                                <label class="control-label">CVC</label>
+                                <input type="text" placeholder="000">
+                            </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <a href="#" class="btn btn-close">Place order</a>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>

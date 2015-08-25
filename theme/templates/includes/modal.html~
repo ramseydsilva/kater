@@ -1,0 +1,92 @@
+<div id="myModal" class="modal fade">
+            
+    <div class="modal-dialog">
+
+        <div class="modal-content"> 
+            <div class="modal-body createpopup">
+
+             <ul class="nav nav-tabs" role="tablist" id="myTab">
+              <li role="presentation" class="active"><a href="#login-tab" aria-controls="login-tab" role="tab" data-toggle="tab">Login</a></li>
+              <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li> 
+            </ul>
+
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="login-tab">
+                <form class="clearfix">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" class="form-control input-sm" placeholder="User Name" />
+                        </div>
+                    </div>      
+                    <div class="col-md-6">
+                        <div class="controllink"><a href="#">Forgot username ?</a></div>
+                    </div>    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="password" class="form-control input-sm" placeholder="Password" />
+                        </div>
+                    </div>              
+                    <div class="col-md-6">
+                        <div class="controllink"><a href="#">Forgot password ?</a></div>
+                    </div>   
+                    <div class="col-md-6 search-btn">
+                        <input type="submit" value="LOGIN" class="btn btn-warning" />
+                    </div>
+                </form>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="profile">
+                <form class="clearfix">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" class="form-control input-sm" placeholder="First Name" />
+                        </div>
+                    </div>    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" class="form-control input-sm" placeholder="Last Name" />
+                        </div>
+                    </div>    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" class="form-control input-sm" placeholder="Email" />
+                        </div>
+                    </div>    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" class="form-control input-sm" placeholder="Mobile Number" />
+                        </div>
+                    </div>              
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <input type="text" class="form-control input-sm" placeholder="Street Address" />
+                        </div>
+                    </div>    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <input type="text" class="form-control input-sm" placeholder="Street Address (optional)" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <select class="form-control" name="Area" style="color:#a2a2a2;">                                	
+                                <option>Area</option>
+                                <option>Dasmān</option>
+                                <option>Sharq</option>
+                                <option>Dasma</option>
+                                <option>More areas will be added here...</option>
+                            </select>
+                        </div>
+                    </div>      
+                    <div class="col-md-12 search-btn">
+                        <a class="btn btn-warning" href="catererpage.html">CREATE MY ACCOUNT</a>
+                    </div>
+                </form>
+              </div> 
+            </div>
+
+            </div>
+ 
+        </div>
+
+    </div>
+</div>

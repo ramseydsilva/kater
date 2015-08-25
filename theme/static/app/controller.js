@@ -1,22 +1,47 @@
 define([
     "jquery",
     "core/app",
+    "./collections/area",
+    "./collections/caterer",
     "./collections/category",
-    "./collections/skill",
-    "./collections/city",
-    "./collections/job",
     "./models/user",
+    "./models/filter",
+    "./models/cart",
     "browser",
     "template",
     "css!font-awesome-css"
-], function($, App, CategoryCollection, SkillCollection, CityCollection, JobCollection, UserModel) {
+], function($, App, AreaCollection, CatererCollection, CategoryCollection, UserModel, FilterModel, CartModel) {
     
     String.prototype.capitalizeFirstLetter = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
     }
 
     $(document).ready(function() {
-        
+
+      $(function () {
+        $('#myTab a:first').tab('show');
+
+        //$('.nstSlider').nstSlider({
+        //        "left_grip_selector": ".leftGrip",
+        //        "right_grip_selector": ".rightGrip",
+        //        "value_bar_selector": ".bar",
+        //        "value_changed_callback": function(cause, leftValue, rightValue) {
+        //            $(this).parent().find('.leftLabel').val(leftValue);
+        //            $(this).parent().find('.rightLabel').val(rightValue);
+        //        }
+        //    });
+
+
+          });	
+
+            var $document = $(document),
+            $element = $('#header'),
+            elementsidebar = 'headerfixed' 
+
+            $(window).scroll(function() {
+              $element.toggleClass(elementsidebar, $document.scrollTop() >= 50); 
+            });
+
         if (navigator.geolocation) {
             var options = {enableHighAccuracy: false, maximumAge: 15000, timeout: 10000};
             //navigator.geolocation.getCurrentPosition(setLocation, function(){}, options);
@@ -33,123 +58,123 @@ define([
 
         window.app = new App({
             
-            $el: document.getElementById("app-container"),
             user: new UserModel(),
+            
+            promises: {},
+            
+            events: {},
 
-            promises: {
-                'mapLoaded': $.Deferred()
+            collections: {
+                'area': new AreaCollection(),
+                'caterer': new CatererCollection(),
+                'category': new CategoryCollection()
             },
-                
+
             components: {
+                "cart": {
+                    view: "views/cart",
+                    el: document.getElementById("cart")
+                },
+                "find-caterers": {
+                    view: "views/find-caterers",
+                    el: document.getElementById("find-caterers")
+                },
+                "banner": {
+                    view: "views/banner",
+                    el: document.getElementById("banner")
+                },
+                "full-banner": {
+                    view: "views/full-banner",
+                    el: document.getElementById("full-banner")
+                },
+                "user-nav": {
+                    view: "views/user-nav",
+                    el: document.getElementById("user-nav")
+                },
+                "logout": {
+                    view: "views/logout",
+                    route: "logout(/)",
+                    depends: ["user-nav"]
+                },
                 "home": {
                     view: "views/home",
                     route: "",
                     el: document.getElementById("home"),
-                    depends: ["map", "location", "user-menu"]
+                    depends: ["user-nav"]
                 },
-                "location": {
-                    view: "views/location",
-                    el: document.getElementById("location")
+                "about-us": {
+                    view: "views/about-us",
+                    route: "about-us(/)",
+                    el: document.getElementById("about-us"),
+                    depends: ["user-nav", "full-banner"]
                 },
-                "map": {
-                    view: "views/map",
-                    el: document.getElementById("map")
+                "privacy-policy": {
+                    view: "views/privacy-policy",
+                    route: "privacy-policy(/)",
+                    el: document.getElementById("privacy-policy"),
+                    depends: ["user-nav", "full-banner"]
                 },
-                "login": {
-                    view: "views/login",
-                    route: "login/",
-                    el: document.getElementById("login"),
-                    depends: ["user-menu"]
+                "terms-and-conditions": {
+                    view: "views/terms-and-conditions",
+                    route: "terms-and-conditions(/)",
+                    el: document.getElementById("terms-and-conditions"),
+                    depends: ["user-nav", "full-banner"]
                 },
-                "logout": {
-                    view: "views/logout",
-                    route: "logout/",
-                    depends: ["user-menu"]
+                "contact-us": {
+                    view: "views/contact-us",
+                    route: "get-in-touch(/)",
+                    el: document.getElementById("contact-us"),
+                    depends: ["user-nav", "full-banner"]
+                },
+                "place-order": {
+                    view: "views/place-order",
+                    route: "place-order(/)",
+                    el: document.getElementById("place-order"),
+                    depends: ["user-nav", "banner", "cart"]
+                },
+                "caterers": {
+                    view: "views/caterers",
+                    route: "caterers(/)",
+                    el: document.getElementById("caterers"),
+                    depends: ["user-nav", "banner", "find-caterers"]
+                },
+                "caterer": {
+                    view: "views/caterer",
+                    route: "caterers/:slug(/)",
+                    el: document.getElementById("caterer"),
+                    depends: ["user-nav", "banner", "cart"]
+                },
+                "my-cart": {
+                    view: "views/my-cart",
+                    route: "my-cart(/)",
+                    el: document.getElementById("my-cart"),
+                    depends: ["user-nav", "banner", "cart"]
+                },
+                "checkout": {
+                    view: "views/checkout",
+                    route: "checkout(/)",
+                    el: document.getElementById("checkout"),
+                    depends: ["user-nav", "banner", "cart"]
                 },
                 "profile": {
                     view: "views/profile",
-                    route: "profile/",
-                    el: document.getElementById("profile"),
-                    depends: ["user-menu"]
-                },
-                "join": {
-                    view: "views/join",
-                    route: "join/",
-                    el: document.getElementById("join"),
-                    depends: ["user-menu"]
-                },
-                "folks": {
-                    view: "views/folks",
-                    route: "folks/",
-                    el: document.getElementById("folks"),
-                    depends: ["user-menu"]
-                },
-                "jobs": {
-                    view: "views/job",
-                    route: "jobs/",
-                    el: document.getElementById("jobs"),
-                    depends: ["user-menu"]
-                },
-                "job": {
-                    view: "views/job",
-                    route: "jobs/:id/",
-                    el: document.getElementById("job"),
-                    depends: ["map", "user-menu"]
-                },
-                "jobPost": {
-                    view: "views/jobPost",
-                    route: "jobs/new/",
-                    el: document.getElementById("jobPost"),
-                    depends: ["map", "location", "user-menu"],
-                },
-                "jobReview": {
-                    view: "views/jobReview",
-                    route: "jobs/new/review/",
-                    el: document.getElementById("jobReview"),
-                    depends: ["jobPost", "user-menu"]
-                },
-                "user-menu": {
-                    view: "views/user-menu",
-                    el: document.getElementById("user-menu")
-                }
-            },
-
-            events: {},
-            collections: {
-                category: new CategoryCollection(),
-                skill: new SkillCollection(),
-                city: new CityCollection(),
-                job: new JobCollection()
-            },
-            changeTitle: function(title) {
-                return this.changePageTitle(title);
-                $h1_title.text(title);
-                $title.text(title + " - Rent some folks");
-            },
-            changePageTitle: function(title) {
-                if (title) {
-                    $h1_page_title.html('<h1>'+title+'</h1>');
-                } else {
-                    if (title===null) return;
-                    $h1_page_title.html('');
+                    route: "profile(/)",
+                    el: document.getElementById("profile-page"),
+                    depends: ["user-nav", "banner", "cart"]
                 }
             }
+
         });
     
+        app.filter = new FilterModel();
+        app.cart = new CartModel();
+        app.collections.area.fetch();
+        app.collections.category.fetch();
+        
         Backbone.history.start({pushState: true});
 
-        app.promises.skillLoaded = window.app.collections.skill.fetch();
-        app.promises.categoryLoaded = window.app.collections.category.fetch();
-        app.promises.cityLoaded = window.app.collections.city.fetch();
-        app.promises.jobLoaded = app.collections.job.fetch();
+        app.user.fetch();        
 
-        app.user.fetch({
-            url: '/api/users/current/',
-            success: function(model) {
-
-            }
-        });
-        
         function getATag(target) {
             if (target.tagName != "A") {
                 return getATag(target.parentElement);
@@ -167,13 +192,16 @@ define([
             e.preventDefault();
             window.history.back();
         });
-
-        $(window).scroll(function() {
-            if (window.scrollY > 20) {
-                $posFixed.css("top", 65);
-            } else {
-                $posFixed.css("top", "auto");
-            }
+		
+		var $document = $(document),
+			$element = $('.mainContentTop .customTabs'),
+			$elements = $('.contentbdox'),
+			className = 'hoveradds';
+			classNames = 'extraspace';
+		
+        $document.scroll(function() {
+            $element.toggleClass(className, $document.scrollTop() >= 300);
+            $elements.toggleClass(classNames, $document.scrollTop() >= 300);
         });
 
     });

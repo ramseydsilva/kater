@@ -28,11 +28,8 @@ function (Backbone, essentials) {
     
         authSync = function(method, model, options) {
             
-            if (!options.headers) {
-                options.headers = {
-                    "X-CSRFToken": csrftoken
-                };
-            }
+            if (!options.headers) options.headers = {};
+            options.headers["X-CSRFToken"] = csrftoken;
             
             if (method) {
                 if (!model) {

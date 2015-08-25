@@ -1,0 +1,1 @@
+define(["core/view","underscore","text!templates/about-us.html"],function(t,e,i){return t.extend({template:e.template(i),events:{},initialize:function(){this.render()},render:function(){this.html=$(this.template({})),this.$el.html(this.html)}})});

@@ -1,1 +1,0 @@
-define(["backbone","../models/search"],function(e,n){return e.Collection.extend({model:n})});

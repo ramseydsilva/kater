@@ -1,0 +1,1 @@
+define(["core/view","underscore","text!templates/review.html"],function(e,t,i){return e.extend({template:t.template(i),events:{},initialize:function(){this.render()},render:function(){this.html=$(this.template({model:this.model})),this.$el.html(this.html)}})});

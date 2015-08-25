@@ -1,0 +1,1 @@
+define(["core/collection","../models/review"],function(e,r){return e.extend({model:r,initialize:function(e,r){this.caterer=r.caterer},url:function(){return this.caterer.url()+"/reviews/"}})});

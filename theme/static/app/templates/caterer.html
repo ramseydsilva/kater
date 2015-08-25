@@ -1,0 +1,312 @@
+ <div class="mainContentTop">
+    <div class="topcntn clearfix">
+        <div class="logosec col-md-3 col-xs-12">
+            <a class="live" href="/caterers/<%= model.attributes.slug %>/">
+                <img width="50" src="<%= model.attributes.image %>"  />
+             </a>
+             <h2><%= model.attributes.name %></h2>
+         </div>
+         <div class="allstf col-md-6 col-xs-7">
+            <ul class="clearfix">
+                <% if (model.attributes.all_female_servers) { %>
+                    <li>All Female Servers</li>
+                <% } %>
+                <% if (model.attributes.arabic_speaking_only) { %>
+                    <li>Arabic Speaking Only</li>
+                <% } %>
+            </ul>
+         </div>
+         <div class="fivstar col-md-3 col-xs-5">
+            <ul class="clearfix">
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+            </ul>
+         </div>
+    </div>
+    <div class="nav-tabs customTabs">
+        <ul class="list-unstyled clearfix">
+            <li role="presentation" class="active">
+                <a href="#Schedule">
+                    <i class="fa fa-calendar"></i> Schedule
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#Menu">
+                    <i class="fa fa-list"></i> Menu
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#accountInfo">
+                    <i class="fa fa-info"></i> About
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#gallerY">
+                    <i class="fa fa-picture-o"></i> Gallery
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#Reviews">
+                    <i class="fa fa-star"></i> Reviews
+                </a>
+            </li>
+        </ul>	
+    </div>
+ </div>
+
+<div class="contentbdox">  
+
+    <div id="Schedule" class="Schedule tab-pane">
+        <div class="addreview">
+            <div class="contentbdox">
+    <div class="celenderbox">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12"><big>Select the date</big></div>
+            <div class="col-md-7 col-sm-8 col-xs-12">
+                <div class="dates">
+                    <a class="text-left" href="#"><i class="fa fa-angle-left"></i></a>
+                    <span>April Thursday 16   &nbsp;|&nbsp;</span>   
+                    <span><b>April Friday 17</b>   &nbsp;|&nbsp;</span>
+                    <span>April saturday</span>
+                    <a class="text-right" data-date-format="mm/dd/yyyy" href="#"><i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-1 col-xs-12"><a class="chngecal" href="javascript:void(0);"><i class="fa fa-calendar"></i></a></div>
+        </div>
+    </div>
+</div>        
+
+<div class="productbox"> 
+    <div class="row">
+        <div class="col-md-2 col-sm-3">
+            <div class="img-thumbnail">
+                <img  src="<%= model.attributes.image %>"  />
+            </div><br />
+            <a href="/caterers/<%= model.attributes.slug %>/"><%= model.attributes.name %>s</a>
+            <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+        </div>
+        <div class="col-md-10 co-sm-9">
+            <div class="tags">
+                <span>08:00 am - 11:00 am</span>
+                <span>08:00 am - 11:00 am</span>
+                <span class="active">08:00 am - 11:00 am</span>
+                <span>08:00 am - 11:00 am</span>
+                <span class="closed">08:00 am - 11:00 am</span>
+                <span>08:00 am - 11:00 am</span>
+                <span>08:00 am - 11:00 am</span>
+                <span>08:00 am - 11:00 am</span>
+            </div>
+            <div class="bottominfo">
+                <p>Note: Your serving time is <span>08:00 PM</span></p>
+                <a href="#" class="btn btn-warning">order now</a>
+            </div>	
+        </div>
+    </div>
+</div>
+
+
+<% if (model.attributes.description) { %>
+ <div class="row" >
+    <div class="col-md-12 tabsContent">
+        <div id="accountInfo" class="accInfo tab-pane"> 
+            <div class="row innerpage">
+                <div class="dtlTxt">
+                    <p><%= model.attributes.description %></p>
+                </div>
+            </div>
+        </div >
+    </div> 
+</div>
+<% } %>
+
+<div id="Menu" class="Menu tab-pane">
+    <div class="myMenu">
+        <div class="table-responsive menudtL"></div>
+    </div>
+</div> 
+
+<div id="gallerY" class="wgallerY tab-pane">
+    <div class="addpic row">
+        <div class="imgs clearfix">
+            <% model.attributes.gallery.forEach(function(image) { %>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <img src="<%= image.image %>" />
+                    <p><%= image.title %></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div> 
+
+<div id="Reviews" class="adReviews tab-pane">    
+    <div class="clearfix row1">      
+        <div class="pstRvwBx">
+            <div class="clearfix">
+                <div class="col-sm-8">
+                    <div class="clearfix rvwPoints">
+                        <div class="rvwPointsA">
+                            4.0
+                        </div>
+                        <div class="rvwPointsB">
+                            <h3>Overall Rating</h3>
+                            <div class="ratingStars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span>based on recent rating</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--//-->
+                    <div class="pointsDfrience">
+                        <ul class="clearfix pointsDfrienceList">
+                            <li>
+                                <h5>Food</h5>
+                                <p>4.0</p>
+                            </li>
+                            <li>
+                                <h5>Service</h5>
+                                <p>4.1</p>
+                            </li>
+                            <li>
+                                <h5>Ambience</h5>
+                                <p>3.9</p>
+                            </li>
+                            <li>
+                                <h5>Value</h5>
+                                <p>3.5</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//-->
+                    <div class="rvwBtm">
+                        <i class="fa fa-thumbs-o-up"></i>
+                        85% recommend it to the friends 
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <ul class="list-unstyled">
+                        <li class="clearfix">
+                            <span>5</span>
+                            <div class="rvwBar"><div style="width:80%"></div></div>
+                        </li>
+                        <li class="clearfix">
+                            <span>4</span>
+                            <div class="rvwBar"><div style="width:60%"></div></div>
+                        </li>
+                        <li class="clearfix">
+                            <span>3</span>
+                            <div class="rvwBar"><div style="width:50%"></div></div>
+                        </li>
+                        <li class="clearfix">
+                            <span>2</span>
+                            <div class="rvwBar"><div style="width:40%"></div></div>
+                        </li>
+                        <li class="clearfix">
+                            <span>1</span>
+                            <div class="rvwBar"><div style="width:100%"></div></div>
+                        </li>
+                    </ul>
+                    <a href="#" class="pstRvwBtn">Post A Review</a>
+                </div>
+            </div>
+        </div>
+        <!--//-->
+        <div class="postRvwForm customForm clearfix">       
+            <form class="clearfix reviewForm" method="post">
+            <div class="col-sm-12">
+                <h4>Post a Review</h4>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" name="first_name" placeholder="First Name" />
+            </div>
+            <div class="col-sm-6">
+                <input type="text" name="last_name" placeholder="Last Name" />
+            </div>
+            <div class="col-sm-6">
+                <input type="text" name="email" placeholder="Email" />
+            </div>
+            <div class="col-sm-6">
+                <input type="text" name="mobile_number"placeholder="Mobile Number" />
+            </div>
+            <div class="col-sm-12">
+                <input type="text" name="title"placeholder="Review Title" />
+            </div>
+            <div class="col-sm-12">
+                <textarea placeholder="Review Description" name="description"></textarea>
+            </div>
+            <div class="clearfix">
+                <ul class="clearfix pointsDfrienceList">
+                    <li class="col-sm-4 col-xs-6">
+                        <h5>Food</h5>
+                        <div class="ratingStars editable">
+                            <i item="food" value="1" class="fa fa-star"></i>
+                            <i item="food" value="2" class="fa fa-star"></i>
+                            <i item="food" value="3" class="fa fa-star"></i>
+                            <i item="food" value="4" class="fa fa-star"></i>
+                            <i item="food" value="5" class="fa fa-star"></i>
+                        </div>
+                    </li>
+                    <li class="col-sm-4 col-xs-6">
+                        <h5>Service</h5>
+                        <div class="ratingStars editable">
+                            <i item="service" value="1" class="fa fa-star"></i>
+                            <i item="service" value="2" class="fa fa-star"></i>
+                            <i item="service" value="3" class="fa fa-star"></i>
+                            <i item="service" value="4" class="fa fa-star"></i>
+                            <i item="service" value="5" class="fa fa-star"></i>
+                        </div>
+                    </li>
+                    <li class="col-sm-4 col-xs-6">
+                        <h5>Ambience</h5>
+                        <div class="ratingStars editable">
+                            <i item="ambience" value="1" class="fa fa-star"></i>
+                            <i item="ambience" value="2" class="fa fa-star"></i>
+                            <i item="ambience" value="3" class="fa fa-star"></i>
+                            <i item="ambience" value="4" class="fa fa-star"></i>
+                            <i item="ambience" value="5" class="fa fa-star"></i>
+                        </div>
+                    </li>
+                    <li class="col-sm-4 col-xs-6">
+                        <h5>Value</h5>
+                        <div class="ratingStars editable">
+                            <i item="value" value="1" class="fa fa-star"></i>
+                            <i item="value" value="2" class="fa fa-star"></i>
+                            <i item="value" value="3" class="fa fa-star"></i>
+                            <i item="value" value="4" class="fa fa-star"></i>
+                            <i item="value" value="5" class="fa fa-star"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-12 text-center postFrmBtmBtn">
+                <input type="submit" value="Submit Review" class="postRvwBtn" /><br/><br/>
+                <div class="formError hidden alert alert-warning" role="alert"></div>
+            </div>
+            </form>
+        </div>
+
+        <div class="reviewList"></div>
+    </div>     
+</div>

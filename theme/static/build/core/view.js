@@ -1,0 +1,1 @@
+define(["backbone","underscore"],function(i){var e=i.View.extend({promise:$.Deferred(),initialize:function(e){this.options=e,i.View.prototype.initialize.apply(this,arguments)},show:function(){this.$el.show()},hide:function(){this.$el.hide()}});return e});

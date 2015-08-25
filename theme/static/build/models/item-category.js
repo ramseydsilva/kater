@@ -1,0 +1,1 @@
+define(["backbone","../collections/item"],function(e,i){return e.Model.extend({initialize:function(e){this.items=new i(e.items,{caterer:this.collection.caterer})}})});

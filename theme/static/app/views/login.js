@@ -1,8 +1,7 @@
 define([
     "core/view",
-    "underscore",
-    "text!templates/login.html",
-], function(View, _, template) {
+    "underscore"
+], function(View, _) {
 
     return View.extend({
 
@@ -34,10 +33,6 @@ define([
         },
 
         render: function() {
-            this.html = $(this.template({
-
-            }));
-            this.$el.html(this.html);
             this.emailInput = this.$("#emailInput");
             this.passwordInput = this.$("#passwordInput");
         }
