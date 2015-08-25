@@ -19,6 +19,9 @@ class Navigation(models.Model):
     class Meta:
         ordering = ('order', 'title',)
 
+    def get_absolute_url(self):
+        return "/%s" %(self.slug)
+
     def __unicode__(self):
         return self.title
 
