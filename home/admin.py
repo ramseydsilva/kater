@@ -35,12 +35,35 @@ class CatererAdmin(admin.ModelAdmin):
 class RatingAdmin(admin.ModelAdmin):
     list_display = ('food', 'service', 'ambience', 'value', 'overall', 'recommend_to_friends')
 
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ("first_name", "last_name", "user", "caterer", "date", "approved")
+    list_filter = ("approved",)
+
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email', 'mobile_number', 'area', 'zip_code')
+    list_filter = ('area', )
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ("date", "user", "grand_total", "paid")
+    list_filter = ("paid",)
+    search_fields = ("user",)
+
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ("item", "quantity")
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ("user", "mobile_number", "birthday", "occupation", "sex", "subscribe_newsletter", "send_sms")
+
 admin.site.register(Navigation, NavigationAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Area, AreaAdmin)
 admin.site.register(Caterer, CatererAdmin)
 admin.site.register(Rating, RatingAdmin)
-admin.site.register(Review)
+admin.site.register(Review, ReviewAdmin)
 admin.site.register(ItemCategory)
 admin.site.register(Item)
+admin.site.register(Address, AddressAdmin)
+admin.site.register(OrderItem, OrderItemAdmin)
+admin.site.register(Order, OrderAdmin)
+admin.site.register(Profile, ProfileAdmin)
