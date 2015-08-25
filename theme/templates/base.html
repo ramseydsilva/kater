@@ -24,6 +24,7 @@
 
     {% include "includes/header.html" %}
 
+    {% block main_container %}
     <div id="full-page">
         <section id="home"></section>
         <div class="container-fluid" id="innerpage">
@@ -56,6 +57,7 @@
             </form>
         </div>
     </div>
+    {% endblock %}
 
     <section id="brand-carousel"></section>
 

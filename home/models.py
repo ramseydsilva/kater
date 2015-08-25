@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.gis.geos import Point
 from django.contrib.gis.db.models import PointField
@@ -147,6 +148,9 @@ class Caterer(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("caterer", args=[self.slug])
 
     def save(self, password=False):
         if not self.slug:
