@@ -22,7 +22,7 @@ class AppSitemap(Sitemap):
     changefreq = "monthly"
 
     def items(self):
-        return ['home', 'profile', 'logout', 'login', 'contact-us', 'caterers']
+        return ['home', 'login', 'register', 'caterers']
 
     def location(self, item):
         return reverse(item)

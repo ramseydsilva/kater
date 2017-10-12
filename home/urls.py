@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^profile/$', AppView.as_view(), name='profile'),
     url(r'^logout/$', AppView.as_view(), name='logout'),
     url(r'^login/$', AppView.as_view(), name='login'),
+    url(r'^register/$', AppView.as_view(), name='register'),
 
     url(r'^place-order/$', AppView.as_view(), name='place-order'),
     url(r'^my-cart/$', AppView.as_view(), name='my-cart'),
